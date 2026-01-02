@@ -1,0 +1,762 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="dark light" />
+  <title>tuneLINQ – Musik- & Videoplayer ohne Werbung</title>
+  <meta name="description" content="tuneLINQ ist ein schneller Musik- und Videoplayer mit Live FFT-Visualizer, Warteschlange, Playlists, Ordner-Ansicht, Radio und Android Auto – ohne Werbung, ohne Abo, ohne Tracking." />
+
+  <!-- Open Graph / Social Preview -->
+  <meta property="og:title" content="tuneLINQ – Musik- & Videoplayer ohne Werbung" />
+  <meta property="og:description" content="Live FFT-Visualizer, Warteschlange, Playlists, Ordner, Radio, Android Auto. Keine Werbung. Kein Abo. Keine In‑App‑Käufe." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="1.png" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="1.png" />
+
+  <style>
+    :root{
+      --bg0:#0b0c0f;
+      --bg1:#11131a;
+      --card:#141824;
+      --card2:#0f1220;
+      --text:#eef2ff;
+      --muted:#a7b0c7;
+      --line:rgba(255,255,255,.10);
+      --accent:#b6e03a; /* passt zu deinen Promo-Grafiken */
+      --accent2:#6bdcff;
+      --shadow: 0 18px 60px rgba(0,0,0,.55);
+      --radius: 18px;
+      --radius2: 26px;
+      --maxw: 1120px;
+    }
+
+    @media (prefers-color-scheme: light){
+      :root{
+        --bg0:#f6f7fb;
+        --bg1:#ffffff;
+        --card:#ffffff;
+        --card2:#f3f5fb;
+        --text:#111427;
+        --muted:#4a526b;
+        --line:rgba(10,20,40,.14);
+        --shadow: 0 18px 60px rgba(0,0,0,.12);
+      }
+    }
+
+    *{ box-sizing: border-box; }
+    html{ scroll-behavior:smooth; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(1200px 700px at 10% 0%, rgba(182,224,58,.18), transparent 60%),
+        radial-gradient(900px 600px at 90% 10%, rgba(107,220,255,.13), transparent 55%),
+        linear-gradient(180deg, var(--bg0), var(--bg1));
+      line-height:1.55;
+    }
+
+    a{ color:inherit; text-decoration:none; }
+    a:focus-visible, button:focus-visible{ outline: 3px solid rgba(182,224,58,.55); outline-offset: 3px; border-radius: 12px; }
+
+    .wrap{ max-width:var(--maxw); margin:0 auto; padding: 0 20px; }
+    .pill{
+      display:inline-flex; align-items:center; gap:10px;
+      padding: 10px 14px;
+      background: rgba(182,224,58,.13);
+      border: 1px solid rgba(182,224,58,.30);
+      border-radius: 999px;
+      color: var(--text);
+      font-weight: 600;
+      letter-spacing:.2px;
+      font-size: 13px;
+    }
+    .dot{ width:9px; height:9px; border-radius:99px; background: var(--accent); box-shadow: 0 0 0 4px rgba(182,224,58,.18); }
+
+    header{
+      position: sticky; top:0; z-index:10;
+      backdrop-filter: blur(10px);
+      background: rgba(10,12,18,.70);
+      border-bottom: 1px solid var(--line);
+    }
+    @media (prefers-color-scheme: light){
+      header{ background: rgba(255,255,255,.72); }
+    }
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+      padding: 14px 0;
+      gap: 18px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:12px; min-width: 170px;
+    }
+    .logo{
+      width: 34px; height:34px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, rgba(182,224,58,.95), rgba(107,220,255,.70));
+      box-shadow: 0 12px 26px rgba(0,0,0,.35);
+    }
+    .brand b{ font-size: 16px; letter-spacing:.4px; }
+    .brand span{ font-size: 12px; color: var(--muted); display:block; margin-top: -2px; }
+
+    nav ul{
+      list-style:none; margin:0; padding:0;
+      display:flex; gap: 16px; flex-wrap: wrap;
+      justify-content: center;
+    }
+    nav a{
+      color: var(--muted);
+      padding: 10px 10px;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 13px;
+    }
+    nav a:hover{ color: var(--text); background: rgba(255,255,255,.06); }
+
+    .actions{ display:flex; gap: 10px; align-items:center; justify-content:flex-end; min-width: 190px; }
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      padding: 11px 14px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.05);
+      color: var(--text);
+      font-weight: 700;
+      font-size: 13px;
+      cursor:pointer;
+      transition: transform .08s ease, background .2s ease, border-color .2s ease;
+      user-select:none;
+      white-space: nowrap;
+    }
+    .btn:hover{ background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.18); }
+    .btn:active{ transform: translateY(1px); }
+    .btn.primary{
+      background: linear-gradient(135deg, rgba(182,224,58,.92), rgba(182,224,58,.72));
+      border-color: rgba(182,224,58,.65);
+      color: #0b0c0f;
+      box-shadow: 0 16px 34px rgba(182,224,58,.18);
+    }
+    .btn.primary:hover{ filter: brightness(1.02); }
+    .btn.ghost{ background: transparent; }
+
+    .hero{
+      padding: 34px 0 22px;
+    }
+    .heroGrid{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 26px;
+      align-items: center;
+    }
+    @media (max-width: 940px){
+      .heroGrid{ grid-template-columns: 1fr; }
+      .actions{ min-width: auto; }
+      nav{ display:none; } /* auf mobilen Geräten reduzierte Navigation */
+    }
+
+    h1{
+      font-size: clamp(34px, 4.2vw, 56px);
+      line-height: 1.08;
+      margin: 14px 0 12px;
+      letter-spacing: -.6px;
+    }
+    .lead{
+      font-size: 16px;
+      color: var(--muted);
+      margin: 0 0 18px;
+      max-width: 62ch;
+    }
+    .heroCtas{ display:flex; gap: 12px; flex-wrap: wrap; margin-top: 14px; }
+    .micro{
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .kpis{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 18px;
+    }
+    @media (max-width: 520px){
+      .kpis{ grid-template-columns: 1fr; }
+    }
+    .kpi{
+      padding: 14px;
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.04);
+      border: 1px solid var(--line);
+    }
+    .kpi b{ display:block; font-size: 14px; }
+    .kpi span{ color: var(--muted); font-size: 12px; }
+
+    .heroShot{
+      border-radius: var(--radius2);
+      overflow:hidden;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      background: rgba(255,255,255,.03);
+    }
+    .heroShot img{
+      width: 100%;
+      height: auto;
+      display:block;
+    }
+
+    section{ padding: 34px 0; }
+    .sectionHead{
+      display:flex; align-items:flex-end; justify-content: space-between;
+      gap: 18px; flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+    h2{
+      margin:0;
+      font-size: 22px;
+      letter-spacing: -.2px;
+    }
+    .sub{
+      color: var(--muted);
+      margin: 0;
+      max-width: 72ch;
+      font-size: 14px;
+    }
+
+    .grid3{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+    @media (max-width: 920px){ .grid3{ grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 560px){ .grid3{ grid-template-columns: 1fr; } }
+
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 16px;
+      box-shadow: 0 10px 26px rgba(0,0,0,.20);
+      position: relative;
+      overflow:hidden;
+    }
+    .card:before{
+      content:"";
+      position:absolute; inset:-80px -80px auto auto;
+      width: 160px; height: 160px;
+      background: radial-gradient(circle at 30% 30%, rgba(182,224,58,.26), transparent 60%);
+      transform: rotate(18deg);
+      pointer-events:none;
+    }
+    .card h3{ margin: 0 0 8px; font-size: 15px; }
+    .card p{ margin: 0; color: var(--muted); font-size: 13px; }
+    .icon{
+      width: 36px; height: 36px; border-radius: 14px;
+      display:grid; place-items:center;
+      background: rgba(182,224,58,.14);
+      border: 1px solid rgba(182,224,58,.22);
+      margin-bottom: 10px;
+    }
+    .icon svg{ width: 18px; height: 18px; }
+    .icon svg path{ fill: var(--accent); }
+
+    .gallery{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 14px;
+    }
+    .shot{
+      grid-column: span 4;
+      background: rgba(255,255,255,.03);
+      border: 1px solid var(--line);
+      border-radius: var(--radius2);
+      overflow:hidden;
+      box-shadow: var(--shadow);
+      cursor: zoom-in;
+      transition: transform .12s ease, border-color .2s ease;
+    }
+    .shot:hover{ transform: translateY(-2px); border-color: rgba(182,224,58,.40); }
+    .shot img{ width:100%; height:auto; display:block; }
+    .shot figcaption{
+      padding: 10px 12px 12px;
+      font-size: 12px;
+      color: var(--muted);
+      border-top: 1px solid var(--line);
+      background: rgba(0,0,0,.12);
+    }
+    @media (max-width: 980px){ .shot{ grid-column: span 6; } }
+    @media (max-width: 560px){ .shot{ grid-column: span 12; } }
+
+    .callout{
+      border-radius: var(--radius2);
+      border: 1px solid rgba(182,224,58,.32);
+      background: linear-gradient(135deg, rgba(182,224,58,.14), rgba(107,220,255,.08));
+      padding: 18px;
+      box-shadow: 0 18px 44px rgba(0,0,0,.18);
+      display:flex; align-items:center; justify-content:space-between; gap: 16px;
+      flex-wrap: wrap;
+    }
+    .callout b{ font-size: 15px; }
+    .callout p{ margin: 6px 0 0; color: var(--muted); font-size: 13px; max-width: 70ch; }
+    .callout .btn.primary{ box-shadow: 0 18px 34px rgba(182,224,58,.20); }
+
+    .faq{
+      display:grid;
+      gap: 10px;
+    }
+    details{
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      padding: 12px 14px;
+    }
+    summary{
+      cursor:pointer;
+      font-weight: 800;
+      font-size: 13px;
+    }
+    details p{
+      margin: 10px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    footer{
+      padding: 30px 0 42px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .foot{
+      display:flex; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+    }
+    .foot a{ text-decoration: underline; text-underline-offset: 2px; }
+
+    /* Lightbox */
+    .lightbox{
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.78);
+      display:none;
+      align-items: center;
+      justify-content: center;
+      padding: 22px;
+      z-index: 100;
+    }
+    .lightbox.open{ display:flex; }
+    .lbInner{
+      max-width: min(1120px, 96vw);
+      max-height: 92vh;
+      width: 100%;
+      display:grid;
+      grid-template-rows: auto auto;
+      gap: 10px;
+    }
+    .lbImg{
+      border-radius: var(--radius2);
+      overflow:hidden;
+      border: 1px solid rgba(255,255,255,.16);
+      box-shadow: var(--shadow);
+      background: rgba(0,0,0,.25);
+      display:grid; place-items:center;
+      max-height: 84vh;
+    }
+    .lbImg img{
+      max-width: 100%;
+      max-height: 84vh;
+      width: auto;
+      height: auto;
+      display:block;
+    }
+    .lbBar{
+      display:flex; align-items:center; justify-content:space-between;
+      gap: 10px; flex-wrap: wrap;
+      color: rgba(255,255,255,.86);
+      font-size: 12px;
+    }
+    .lbBar .btn{ border-color: rgba(255,255,255,.20); background: rgba(255,255,255,.08); }
+    .lbBar .btn:hover{ background: rgba(255,255,255,.12); }
+    .lbHint{ color: rgba(255,255,255,.72); }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="wrap">
+      <div class="nav">
+        <a class="brand" href="#top" aria-label="tuneLINQ Start">
+          <div class="logo" aria-hidden="true"></div>
+          <div>
+            <b>tuneLINQ</b>
+            <span>Musik & Video. Offline & Radio.</span>
+          </div>
+        </a>
+
+        <nav aria-label="Hauptnavigation">
+          <ul>
+            <li><a href="#features">Funktionen</a></li>
+            <li><a href="#screens">Screenshots</a></li>
+            <li><a href="#privacy">Privacy</a></li>
+            <li><a href="#faq">FAQ</a></li>
+          </ul>
+        </nav>
+
+        <div class="actions">
+          <!-- TODO: Ersetze die Links durch deine echten Ziele (Play Store, GitHub Repo, etc.) -->
+          <a class="btn ghost" href="https://github.com/" target="_blank" rel="noreferrer">GitHub</a>
+          <a class="btn primary" href="#download">Download</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="top" class="wrap">
+    <section class="hero" aria-label="Hero">
+      <div class="heroGrid">
+        <div>
+          <span class="pill"><span class="dot" aria-hidden="true"></span> Kein Abo. Keine Werbung. Keine In‑App‑Käufe.</span>
+          <h1>Dein Player – vielseitig, schnell und privat.</h1>
+          <p class="lead">
+            <b>tuneLINQ</b> ist ein moderner Musik- und Videoplayer mit Live FFT‑Visualizer, Warteschlange,
+            Playlists, Ordner‑Ansicht, Radio und Android Auto. Fokus: Bedienung, Performance und Datenschutz.
+          </p>
+
+          <div class="heroCtas" id="download">
+            <!-- TODO: Link zum Play Store eintragen -->
+            <a class="btn primary" href="#" onclick="return false" title="Play Store Link eintragen">Play Store (Link eintragen)</a>
+            <!-- Optional: APK / Releases -->
+            <a class="btn" href="#" onclick="return false">Release / APK (optional)</a>
+          </div>
+          <div class="micro">
+            Tipp: In GitHub Pages kannst du Links später einfach anpassen. Die Seite ist komplett „static“ (kein Build nötig).
+          </div>
+
+          <div class="kpis" aria-label="Highlights">
+            <div class="kpi">
+              <b>Live FFT‑Visualizer</b>
+              <span>Direkt im Player – flüssig und klar.</span>
+            </div>
+            <div class="kpi">
+              <b>Sync vom PC</b>
+              <span>Playlists & Ordner kabellos synchronisieren.*</span>
+            </div>
+            <div class="kpi">
+              <b>Datenschutz</b>
+              <span>Keine Werbung, kein Tracking, keine Datenweitergabe.</span>
+            </div>
+          </div>
+
+          <p class="micro">
+            * Erfordert lokales WLAN und den „tuneLINQ Sync‑Helper“ (kostenlos verfügbar).
+          </p>
+        </div>
+
+        <div class="heroShot" aria-label="App Preview">
+          <img src="1.png" alt="tuneLINQ – Übersicht der App-Funktionen" loading="eager" />
+        </div>
+      </div>
+    </section>
+
+    <section id="features" aria-label="Funktionen">
+      <div class="sectionHead">
+        <div>
+          <h2>Funktionen, die im Alltag zählen</h2>
+          <p class="sub">
+            Klarer Fokus auf Wiedergabe, Organisation und schnelle Bedienung – ohne unnötigen Ballast.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid3">
+        <div class="card">
+          <div class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M3 3h2v18H3V3zm4 10h2v8H7v-8zm4-6h2v14h-2V7zm4 4h2v10h-2V11zm4-8h2v18h-2V3z"/></svg>
+          </div>
+          <h3>Live FFT‑Visualizer</h3>
+          <p>Reagiert in Echtzeit auf die Musik und sorgt für ein modernes Player‑Feeling.</p>
+        </div>
+
+        <div class="card">
+          <div class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M7 17h10v2H7v-2zM7 5h10v2H7V5zm0 6h10v2H7v-2zm0 6h6v2H7v-2z"/></svg>
+          </div>
+          <h3>Warteschlange & Reihenfolge</h3>
+          <p>Tracks zur laufenden Wiedergabe hinzufügen, umsortieren und direkt weitermachen.</p>
+        </div>
+
+        <div class="card">
+          <div class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M10 3v10.55A4 4 0 1 0 12 17V7h6V3h-8z"/></svg>
+          </div>
+          <h3>Playlists & Sammlungen</h3>
+          <p>Eigene Wiedergabelisten anlegen, verwalten und schnell wiederfinden.</p>
+        </div>
+
+        <div class="card">
+          <div class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M10 4H4v16h16V8h-8l-2-4zm1 5h9v10H4V5h5l2 4z"/></svg>
+          </div>
+          <h3>Ordner‑Ansicht</h3>
+          <p>Listet alle Ordner, in denen Musik vorhanden ist – ideal für lokale Bibliotheken.</p>
+        </div>
+
+        <div class="card">
+          <div class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 0 0-9 9h2a7 7 0 1 1 7 7v2a9 9 0 0 0 0-18zm1 5h-2v6l5 3 1-1.7-4-2.3V8z"/></svg>
+          </div>
+          <h3>Radio‑Streaming</h3>
+          <p>Deutsche Radiosender streamen oder eigene Streams hinzufügen.</p>
+        </div>
+
+        <div class="card">
+          <div class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M4 6h16v12H4V6zm2 2v8h12V8H6zm7 10h5v2h-5v-2z"/></svg>
+          </div>
+          <h3>Videoplayer</h3>
+          <p>Gestensteuerung inklusive: Pinch‑to‑Zoom und Swipe‑to‑Seek.</p>
+        </div>
+      </div>
+    </section>
+
+    <section aria-label="Download Callout">
+      <div class="callout">
+        <div>
+          <b>Bereit? tuneLINQ ausprobieren.</b>
+          <p>
+            Wenn du einen Player suchst, der einfach funktioniert – ohne Werbung und ohne Abo – ist tuneLINQ genau dafür gebaut.
+          </p>
+        </div>
+        <!-- TODO: Play Store Link einsetzen -->
+        <a class="btn primary" href="#" onclick="return false">Zum Play Store (Link eintragen)</a>
+      </div>
+    </section>
+
+    <section id="screens" aria-label="Screenshots">
+      <div class="sectionHead">
+        <div>
+          <h2>Screenshots</h2>
+          <p class="sub">Klicken zum Vergrößern. Die Bilder liegen im gleichen Ordner wie diese <code>index.html</code>.</p>
+        </div>
+      </div>
+
+      <div class="gallery" id="gallery">
+        <figure class="shot" data-full="2.png" data-caption="Live FFT‑Visualizer – modernes Design, einfache Bedienung">
+          <img src="2.png" alt="Live FFT-Visualizer Screenshot" loading="lazy" />
+          <figcaption>Live FFT‑Visualizer</figcaption>
+        </figure>
+
+        <figure class="shot" data-full="7.png" data-caption="Anpassbare Warteschlange – Titel hinzufügen oder Reihenfolge ändern">
+          <img src="7.png" alt="Warteschlange Screenshot" loading="lazy" />
+          <figcaption>Anpassbare Warteschlange</figcaption>
+        </figure>
+
+        <figure class="shot" data-full="3.png" data-caption="Eigene Wiedergabelisten erstellen">
+          <img src="3.png" alt="Playlists Screenshot" loading="lazy" />
+          <figcaption>Playlists</figcaption>
+        </figure>
+
+        <figure class="shot" data-full="5.png" data-caption="Ordneransicht – listet alle Ordner mit Musik">
+          <img src="5.png" alt="Ordneransicht Screenshot" loading="lazy" />
+          <figcaption>Ordner‑Ansicht</figcaption>
+        </figure>
+
+        <figure class="shot" data-full="6.png" data-caption="Radio – deutsche Sender streamen oder eigene Streams hinzufügen">
+          <img src="6.png" alt="Radio Screenshot" loading="lazy" />
+          <figcaption>Radio‑Streaming</figcaption>
+        </figure>
+
+        <figure class="shot" data-full="10.png" data-caption="Videoplayer – Pinch‑to‑Zoom & Swipe‑to‑Seek">
+          <img src="10.png" alt="Videoplayer Screenshot" loading="lazy" />
+          <figcaption>Videoplayer</figcaption>
+        </figure>
+
+        <figure class="shot" data-full="4.png" data-caption="Kabelloses Synchronisieren von Playlists und Musikordnern (lokales WLAN + Sync‑Helper)">
+          <img src="4.png" alt="Synchronisieren Screenshot" loading="lazy" />
+          <figcaption>Sync vom PC</figcaption>
+        </figure>
+
+        <figure class="shot" data-full="9.png" data-caption="Android Auto – auswählen, was beim Start abgespielt werden soll">
+          <img src="9.png" alt="Android Auto Einstellungen Screenshot" loading="lazy" />
+          <figcaption>Android Auto</figcaption>
+        </figure>
+
+        <figure class="shot" data-full="8.png" data-caption="Ohne Werbung, ohne Abo, ohne In‑App‑Käufe, ohne Datensammeln">
+          <img src="8.png" alt="Keine Werbung Screenshot" loading="lazy" />
+          <figcaption>Keine Werbung</figcaption>
+        </figure>
+
+        <figure class="shot" data-full="1.png" data-caption="Überblick – vielseitig einsetzbarer Player">
+          <img src="1.png" alt="Feature-Übersicht Screenshot" loading="lazy" />
+          <figcaption>Überblick</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="privacy" aria-label="Datenschutz">
+      <div class="sectionHead">
+        <div>
+          <h2>Privacy by Design</h2>
+          <p class="sub">
+            tuneLINQ ist so gedacht, dass du deine Musik hören kannst – ohne dass dich Werbung oder „Tracking“ begleitet.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid3">
+        <div class="card">
+          <div class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 2 4 5v6c0 5 3.4 9.7 8 11 4.6-1.3 8-6 8-11V5l-8-3zm0 18c-3.4-1.3-6-4.9-6-9V6.3L12 4l6 2.3V11c0 4.1-2.6 7.7-6 9z"/></svg>
+          </div>
+          <h3>Kein Tracking</h3>
+          <p>Keine Analyse-SDKs oder versteckte Nutzerprofile (Stand dieser Seite).</p>
+        </div>
+
+        <div class="card">
+          <div class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M3 6h18v2H3V6zm0 5h18v2H3v-2zm0 5h18v2H3v-2z"/></svg>
+          </div>
+          <h3>Keine In‑App‑Käufe</h3>
+          <p>Der Funktionsumfang steht ohne Paywall bereit.</p>
+        </div>
+
+        <div class="card">
+          <div class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 4a8 8 0 1 0 8 8h-2a6 6 0 1 1-6-6V4zm1 0h7v7h-2V7.41l-6.3 6.3-1.4-1.42 6.3-6.3H13V4z"/></svg>
+          </div>
+          <h3>Offline first</h3>
+          <p>Lokale Musikbibliotheken stehen im Mittelpunkt. Radio ist optional.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" aria-label="FAQ">
+      <div class="sectionHead">
+        <div>
+          <h2>FAQ</h2>
+          <p class="sub">Kurz beantwortet – damit Besucher sofort wissen, was sie erwartet.</p>
+        </div>
+      </div>
+
+      <div class="faq">
+        <details>
+          <summary>Ist tuneLINQ kostenlos?</summary>
+          <p>Ja – ohne Abo und ohne In‑App‑Käufe (siehe Screenshot „Keine Werbung“).</p>
+        </details>
+
+        <details>
+          <summary>Welche Musikquellen werden unterstützt?</summary>
+          <p>Lokale Musikdateien auf dem Gerät sowie Radio-Streams. Zusätzlich ist ein Sync vom PC im lokalen WLAN möglich (mit Sync‑Helper).</p>
+        </details>
+
+        <details>
+          <summary>Funktioniert Android Auto?</summary>
+          <p>Ja – du kannst auswählen, welche Playlist/Ordner/Radiofavorit beim Start von Android Auto automatisch startet.</p>
+        </details>
+
+        <details>
+          <summary>Wie kann ich Kontakt aufnehmen?</summary>
+          <p>Unten im Footer kannst du einen Kontakt-Link (E‑Mail oder GitHub Issues) eintragen.</p>
+        </details>
+      </div>
+    </section>
+
+    <footer aria-label="Footer">
+      <div class="foot">
+        <div>
+          <div><b style="color:var(--text)">tuneLINQ</b> <span>– Musik & Video ohne Werbung</span></div>
+          <div style="margin-top:6px">© <span id="year"></span> – Daniel Spatkowski (bitte anpassen, falls gewünscht)</div>
+        </div>
+
+        <div>
+          <!-- TODO: Links anpassen -->
+          <div><a href="https://github.com/" target="_blank" rel="noreferrer">GitHub</a></div>
+          <div><a href="#" onclick="return false">Kontakt (Link eintragen)</a></div>
+          <div><a href="#" onclick="return false">Impressum/Datenschutz (optional)</a></div>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-label="Screenshot vergrößert">
+    <div class="lbInner">
+      <div class="lbImg">
+        <img id="lbImage" alt="" />
+      </div>
+      <div class="lbBar">
+        <div class="lbHint" id="lbCaption"> </div>
+        <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
+          <button class="btn" id="prevBtn" type="button" aria-label="Vorheriges Bild">←</button>
+          <button class="btn" id="nextBtn" type="button" aria-label="Nächstes Bild">→</button>
+          <button class="btn" id="closeBtn" type="button" aria-label="Schließen (Esc)">Schließen</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Jahr im Footer
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Lightbox Gallery
+    const items = Array.from(document.querySelectorAll(".shot"));
+    const lb = document.getElementById("lightbox");
+    const lbImg = document.getElementById("lbImage");
+    const lbCap = document.getElementById("lbCaption");
+    const closeBtn = document.getElementById("closeBtn");
+    const prevBtn = document.getElementById("prevBtn");
+    const nextBtn = document.getElementById("nextBtn");
+
+    let idx = 0;
+
+    function openAt(i){
+      idx = (i + items.length) % items.length;
+      const el = items[idx];
+      const src = el.getAttribute("data-full") || el.querySelector("img").getAttribute("src");
+      const cap = el.getAttribute("data-caption") || el.querySelector("figcaption")?.textContent || "";
+      lbImg.src = src;
+      lbImg.alt = cap || "Screenshot";
+      lbCap.textContent = cap;
+
+      lb.classList.add("open");
+      lb.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+    }
+
+    function close(){
+      lb.classList.remove("open");
+      lb.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+      // Bild leeren (verhindert „Flash“ beim nächsten Öffnen)
+      setTimeout(() => { lbImg.src = ""; }, 120);
+    }
+
+    function next(){ openAt(idx + 1); }
+    function prev(){ openAt(idx - 1); }
+
+    items.forEach((el, i) => {
+      el.addEventListener("click", () => openAt(i));
+      el.addEventListener("keydown", (e) => {
+        if(e.key === "Enter" || e.key === " "){ e.preventDefault(); openAt(i); }
+      });
+      el.tabIndex = 0; // keyboard-accessible
+    });
+
+    closeBtn.addEventListener("click", close);
+    nextBtn.addEventListener("click", next);
+    prevBtn.addEventListener("click", prev);
+
+    lb.addEventListener("click", (e) => {
+      if(e.target === lb) close();
+    });
+
+    window.addEventListener("keydown", (e) => {
+      if(!lb.classList.contains("open")) return;
+      if(e.key === "Escape") close();
+      if(e.key === "ArrowRight") next();
+      if(e.key === "ArrowLeft") prev();
+    });
+  </script>
+</body>
+</html>
