@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Datenschutzerklärung – tuneLINQ</title>
+  <style>
+    :root{
+      --fg:#1b1b1b;
+      --muted:#5a5a5a;
+      --bg:#ffffff;
+      --card:#f6f7f9;
+      --line:#e6e6e6;
+      --accent:#1a73e8;
+      --radius:14px;
+      --max:920px;
+    }
+    @media (prefers-color-scheme: dark){
+      :root{
+        --fg:#f2f2f2;
+        --muted:#b7b7b7;
+        --bg:#0f1115;
+        --card:#171a21;
+        --line:#2a2f3a;
+        --accent:#8ab4f8;
+      }
+    }
+    body{
+      margin:0;
+      font-family: system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Noto Sans","Liberation Sans",sans-serif;
+      background:var(--bg);
+      color:var(--fg);
+      line-height:1.55;
+    }
+    header{
+      padding:28px 18px 10px;
+      border-bottom:1px solid var(--line);
+      background:linear-gradient(180deg, rgba(26,115,232,0.10), transparent 60%);
+    }
+    header .wrap{max-width:var(--max); margin:0 auto;}
+    h1{margin:0 0 6px; font-size:1.6rem;}
+    header p{margin:0; color:var(--muted);}
+    nav{
+      max-width:var(--max);
+      margin:16px auto 0;
+      padding:0 18px 18px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+    nav a{
+      text-decoration:none;
+      color:var(--accent);
+      background:var(--card);
+      border:1px solid var(--line);
+      padding:8px 10px;
+      border-radius:999px;
+      font-size:0.92rem;
+    }
+    main{max-width:var(--max); margin:0 auto; padding:18px;}
+    section{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:18px;
+      margin:14px 0;
+    }
+    h2{margin:0 0 10px; font-size:1.22rem;}
+    h3{margin:14px 0 8px; font-size:1.05rem;}
+    p{margin:8px 0;}
+    ul{margin:8px 0 8px 18px;}
+    li{margin:6px 0;}
+    .meta{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:10px;
+      color:var(--muted);
+      font-size:0.92rem;
+    }
+    .note{
+      border-left:4px solid var(--accent);
+      padding:10px 12px;
+      background:rgba(26,115,232,0.08);
+      border-radius:10px;
+      margin:10px 0;
+    }
+    table{
+      width:100%;
+      border-collapse:separate;
+      border-spacing:0;
+      overflow:hidden;
+      border:1px solid var(--line);
+      border-radius:12px;
+      background:var(--bg);
+      margin:10px 0;
+      font-size:0.95rem;
+    }
+    th,td{
+      padding:10px 10px;
+      border-bottom:1px solid var(--line);
+      vertical-align:top;
+    }
+    th{
+      text-align:left;
+      background:rgba(0,0,0,0.04);
+    }
+    @media (prefers-color-scheme: dark){
+      th{ background:rgba(255,255,255,0.06); }
+    }
+    tr:last-child td{border-bottom:none;}
+    code, pre{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size:0.95em;
+    }
+    footer{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:14px 18px 28px;
+      color:var(--muted);
+      font-size:0.92rem;
+    }
+    a{color:var(--accent);}
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="wrap">
+      <h1>Datenschutzerklärung – tuneLINQ (Android)</h1>
+      <p>Informationen zur Verarbeitung personenbezogener Daten bei Nutzung der App „tuneLINQ“.</p>
+      <div class="meta">
+        <div><strong>Stand:</strong> 02. Januar 2026</div>
+        <div><strong>Geltungsbereich:</strong> Android‑App „tuneLINQ“</div>
+      </div>
+    </div>
+
+    <nav aria-label="Inhaltsverzeichnis">
+      <a href="#verantwortlicher">Verantwortlicher</a>
+      <a href="#ueberblick">Überblick</a>
+      <a href="#lokal">Lokale Verarbeitung</a>
+      <a href="#berechtigungen">Berechtigungen</a>
+      <a href="#werbung">Werbung (AdMob)</a>
+      <a href="#streams-sync">Streams & Sync</a>
+      <a href="#rechte">Ihre Rechte</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="verantwortlicher">
+      <h2>1. Verantwortlicher</h2>
+      <p>
+        Verantwortlich im Sinne der Datenschutz‑Grundverordnung (DSGVO) ist:
+      </p>
+      <p>
+        <strong>Daniel Spatkowski</strong><br/>
+        (Einzelentwickler / Betreiber der App „tuneLINQ“)
+      </p>
+
+    </section>
+
+    <section id="ueberblick">
+      <h2>2. Überblick: Was macht die App und welche Daten werden verarbeitet?</h2>
+      <p>
+        tuneLINQ ist ein Audio‑, Video‑ und Stream‑Player mit Bibliotheks‑/Playlist‑Funktionen sowie optionaler
+        Synchronisation mit dem „tuneLINQ Sync‑Helper“ (PC) über das lokale Netzwerk.
+      </p>
+      <p>
+        Grundsätzlich gilt: Die App verarbeitet Ihre Medieninhalte (z.B. Titel, Interpret, Album, Dateipfade/URIs, Cover‑Bilder,
+        Videos) primär <strong>lokal auf Ihrem Gerät</strong>, um die Wiedergabe, Suche, Sortierung und Darstellung zu ermöglichen.
+      </p>
+      <p>
+        Darüber hinaus können – abhängig von Nutzung und Einstellungen – Daten an <strong>Drittdienste</strong> oder
+        <strong>von Ihnen ausgewählte Server</strong> übermittelt werden (z.B. bei Radio‑Streams oder bei der optionalen
+        PC‑Synchronisation). Details finden Sie unten.
+      </p>
+    </section>
+
+    <section id="lokal">
+      <h2>3. Lokale Verarbeitung auf dem Gerät</h2>
+
+      <h3>3.1 Medienbibliothek (Audio/Video)</h3>
+      <p>
+        Zur Anzeige und Wiedergabe liest tuneLINQ Informationen aus der Medienbibliothek Ihres Geräts (Android MediaStore),
+        u.a. Metadaten (Titel, Interpret, Album, Dauer), Medien‑URIs sowie ggf. Cover/Thumbnails.
+        Diese Verarbeitung erfolgt lokal. Die App erstellt dabei keine Entwickler‑seitigen Nutzerprofile.
+      </p>
+
+      <h3>3.2 Einstellungen und App‑Daten</h3>
+      <p>
+        Die App speichert Einstellungen und Zustände lokal (z.B. Wiedergabemodi, UI‑Zustände, Radio‑Favoriten, Filter/Sortierung,
+        ausgewählte Ordner/Playlists, Sync‑Konfiguration). Diese Daten verbleiben auf Ihrem Gerät und können durch Löschen der App‑Daten
+        oder Deinstallation entfernt werden.
+      </p>
+
+      <h3>3.3 Audio‑Effekte / Visualizer</h3>
+      <p>
+        Wenn Sie den Visualizer (FFT‑Effekte) verwenden, verarbeitet die App Audiodaten zur Visualisierung.
+        Dabei werden keine Audioaufnahmen gespeichert oder übertragen.
+        Je nach Android‑Version kann hierfür die Berechtigung „Mikrofon“ erforderlich sein, obwohl kein klassischer
+        Mikrofon‑Mitschnitt beabsichtigt ist.
+      </p>
+
+      <div class="note">
+        <p>
+          Wenn Sie die Mikrofon‑Berechtigung nicht erteilen, bleiben die Grundfunktionen (Wiedergabe, Bibliothek, Playlists)
+          erhalten; lediglich bestimmte Visual‑Effekte können deaktiviert sein.
+        </p>
+      </div>
+    </section>
+
+    <section id="berechtigungen">
+      <h2>4. App‑Berechtigungen (Android)</h2>
+      <p>
+        Die App fordert – je nach Android‑Version – folgende Berechtigungen an bzw. deklariert sie im Manifest:
+      </p>
+
+      <table aria-label="Berechtigungen">
+        <thead>
+          <tr>
+            <th style="width:28%;">Berechtigung</th>
+            <th style="width:44%;">Zweck</th>
+            <th style="width:28%;">Hinweis</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>READ_MEDIA_AUDIO</strong><br/>(bzw. <strong>READ_EXTERNAL_STORAGE</strong> bis Android 12)</td>
+            <td>Auslesen von Musikdateien und Metadaten zur Anzeige und Wiedergabe.</td>
+            <td>Ohne diese Berechtigung ist die lokale Musikbibliothek ggf. nicht nutzbar.</td>
+          </tr>
+          <tr>
+            <td><strong>READ_MEDIA_VIDEO</strong></td>
+            <td>Auslesen von Videodateien und Metadaten zur Anzeige und Wiedergabe.</td>
+            <td>Ohne diese Berechtigung ist die Videobibliothek ggf. nicht nutzbar.</td>
+          </tr>
+          <tr>
+            <td><strong>RECORD_AUDIO</strong></td>
+            <td>Ermöglicht Visualizer‑/Audio‑Effekte (FFT‑Darstellung).</td>
+            <td>Keine Speicherung/Übertragung von Audioaufnahmen durch den Entwickler beabsichtigt.</td>
+          </tr>
+          <tr>
+            <td><strong>INTERNET</strong><br/><strong>ACCESS_NETWORK_STATE</strong><br/><strong>CHANGE_WIFI_MULTICAST_STATE</strong></td>
+            <td>Radio‑/Stream‑Wiedergabe, Abruf von Stream‑Metadaten, optionale Sync‑Funktionen im lokalen Netzwerk.</td>
+            <td>Beim Abruf externer Streams werden Verbindungsdaten (z.B. IP) an den jeweiligen Anbieter übermittelt.</td>
+          </tr>
+          <tr>
+            <td><strong>FOREGROUND_SERVICE</strong><br/><strong>FOREGROUND_SERVICE_MEDIA_PLAYBACK</strong><br/><strong>POST_NOTIFICATIONS</strong></td>
+            <td>Wiedergabe im Hintergrund inkl. Player‑Benachrichtigung und Steuerung.</td>
+            <td>Benachrichtigungen können in den Android‑Einstellungen verwaltet werden.</td>
+          </tr>
+          <tr>
+            <td><strong>FOREGROUND_SERVICE_DATA_SYNC</strong></td>
+            <td>Foreground‑Ausführung bei längeren Sync‑Vorgängen.</td>
+            <td>Nur relevant, wenn Sync genutzt wird.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>
+        Sie können Berechtigungen in den Android‑Einstellungen jederzeit widerrufen. Bestimmte Funktionen können dann eingeschränkt sein.
+      </p>
+    </section>
+
+    <section id="werbung">
+      <h2>5. Werbung und Drittanbieter: Google Mobile Ads (AdMob)</h2>
+      <p>
+        Die App kann Werbeanzeigen über <strong>Google Mobile Ads / AdMob</strong> anzeigen. Anbieter ist:
+        Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland (für Nutzer im EWR; je nach Konstellation auch Google LLC, USA).
+      </p>
+
+      <h3>5.1 Welche Daten können hierbei verarbeitet werden?</h3>
+      <p>
+        Bei der Auslieferung von Werbung verarbeitet Google typischerweise technische Daten, die für die Anzeige und Messung von Werbung erforderlich sind.
+        Dazu können insbesondere gehören:
+      </p>
+      <ul>
+        <li>IP‑Adresse (bzw. abgeleitete Standortinformationen auf grober Ebene)</li>
+        <li>Geräte‑ und App‑Informationen (z.B. Geräte‑Modell, Betriebssystem, App‑Version, Sprache)</li>
+        <li>Werbe‑IDs (z.B. Android Advertising ID), ggf. lokale Kennungen/Cookies innerhalb des Werbe‑SDKs</li>
+        <li>Interaktionen mit Anzeigen (Impressions, Klicks), Diagnose‑/Crash‑Informationen des SDKs</li>
+      </ul>
+
+      <h3>5.2 Personalisierte vs. nicht‑personalisierte Werbung</h3>
+      <p>
+        Je nach Region, Google‑Einstellungen und ggf. erteilter Einwilligung können Anzeigen personalisiert oder nicht‑personalisiert sein.
+        Personalisierung bedeutet, dass Anzeigen anhand Ihrer Interessen (abgeleitet aus Nutzungsdaten) angepasst werden können.
+      </p>
+
+      <h3>5.3 Rechtsgrundlage</h3>
+      <p>
+        Die Rechtsgrundlage kann – je nach Ausgestaltung (insbesondere personalisierte Werbung) – <strong>Ihre Einwilligung</strong>
+        (Art. 6 Abs. 1 lit. a DSGVO) oder ein <strong>berechtigtes Interesse</strong> (Art. 6 Abs. 1 lit. f DSGVO) an der Finanzierung der App durch Werbung sein.
+        Sofern eine Einwilligung erforderlich ist, sollte diese vor Anzeige personalisierter Werbung eingeholt werden.
+      </p>
+
+      <h3>5.4 Weitere Informationen und Opt‑Out</h3>
+      <ul>
+        <li>Google Datenschutzerklärung: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">https://policies.google.com/privacy</a></li>
+        <li>Google Werbeeinstellungen: <a href="https://adssettings.google.com/" target="_blank" rel="noopener">https://adssettings.google.com/</a></li>
+        <li>Android: Zurücksetzen/Deaktivieren der Werbe‑ID in den Systemeinstellungen (Pfad je nach Android‑Version).</li>
+      </ul>
+
+      <div class="note">
+        <p>
+          Hinweis: Der App‑Entwickler erhält in der Regel nur aggregierte Berichte (z.B. Anzahl der Einblendungen/Klicks) und
+          keinen direkten Zugriff auf Ihre personenbezogenen Werbe‑Daten, sofern solche durch Google verarbeitet werden.
+        </p>
+      </div>
+    </section>
+
+    <section id="streams-sync">
+      <h2>6. Internet‑Funktionen: Streams (Radio) und optionale PC‑Synchronisation</h2>
+
+      <h3>6.1 Radio‑/Stream‑Wiedergabe</h3>
+      <p>
+        Wenn Sie Internet‑Streams (z.B. Radio) abspielen, baut die App eine Verbindung zu dem von Ihnen gewählten Streaming‑Server auf.
+        Der jeweilige Anbieter verarbeitet dabei zwangsläufig Verbindungsdaten (z.B. IP‑Adresse, Zeitpunkt, ggf. User‑Agent), um den Stream auszuliefern.
+        Für die Datenverarbeitung durch den jeweiligen Stream‑Anbieter ist dessen Datenschutzerklärung maßgeblich.
+      </p>
+
+      <h3>6.2 Abruf von Stream‑Metadaten</h3>
+      <p>
+        Zur Anzeige aktueller Titelinformationen kann die App Stream‑Metadaten (ICY) abfragen. Auch hierbei wird eine Verbindung
+        zum jeweiligen Stream‑Server hergestellt.
+      </p>
+
+      <h3>6.3 tuneLINQ Sync‑Helper (PC) – lokale Netzwerk‑Synchronisation (optional)</h3>
+      <p>
+        tuneLINQ kann optional mit dem „tuneLINQ Sync‑Helper“ auf Ihrem PC gekoppelt werden. Dabei kommuniziert die App mit einem
+        <strong>von Ihnen angegebenen Host/Port</strong> in Ihrem lokalen Netzwerk.
+      </p>
+      <p>
+        Im Rahmen der Kopplung und Synchronisation können folgende Daten an den von Ihnen gewählten PC‑Sync‑Server übertragen werden:
+      </p>
+      <ul>
+        <li>Gerätename (zur Anzeige im Sync‑Helper)</li>
+        <li>Kopplungs‑/Authentifizierungs‑Token</li>
+        <li>Ausgewählte Playlist‑/Ordner‑Informationen (Namen/IDs) und Track‑Listen</li>
+        <li>Download‑Anfragen für Dateien (falls Sie Medien vom PC übertragen)</li>
+      </ul>
+
+      <div class="note">
+        <p>
+          Die Synchronisation findet nur statt, wenn Sie diese Funktion aktiv verwenden. Host/Port und Tokens werden lokal in der App gespeichert,
+          damit Sie nicht jedes Mal neu koppeln müssen. Sie können Pairings jederzeit in der App entfernen oder durch Löschen der App‑Daten zurücksetzen.
+        </p>
+      </div>
+
+      <h3>6.4 Übermittlung in Drittländer</h3>
+      <p>
+        Bei Nutzung von Google‑Diensten (z.B. AdMob) kann eine Verarbeitung in Ländern außerhalb des EWR, insbesondere in den USA, nicht ausgeschlossen werden.
+        Google informiert hierzu in der eigenen Datenschutzerklärung.
+      </p>
+    </section>
+
+    <section id="speicherfristen">
+      <h2>7. Speicherdauer</h2>
+      <ul>
+        <li><strong>Lokale App‑Einstellungen/Pairings:</strong> bis zur Löschung durch Sie (App‑Daten löschen/Deinstallation) oder bis Sie Einträge entfernen.</li>
+        <li><strong>Medienbibliotheks‑Informationen:</strong> werden aus dem System (MediaStore) gelesen; die App hält ggf. Caches/Listen zur Performance, die durch App‑Daten‑Löschung entfernt werden.</li>
+        <li><strong>AdMob‑/Werbedaten:</strong> Speicherdauer richtet sich nach Google (siehe Google Datenschutzerklärung).</li>
+      </ul>
+    </section>
+
+    <section id="rechte">
+      <h2>8. Ihre Rechte (DSGVO)</h2>
+      <p>Sie haben – soweit anwendbar – folgende Rechte:</p>
+      <ul>
+        <li>Auskunft (Art. 15 DSGVO)</li>
+        <li>Berichtigung (Art. 16 DSGVO)</li>
+        <li>Löschung (Art. 17 DSGVO)</li>
+        <li>Einschränkung der Verarbeitung (Art. 18 DSGVO)</li>
+        <li>Datenübertragbarkeit (Art. 20 DSGVO)</li>
+        <li>Widerspruch gegen Verarbeitung auf Basis berechtigter Interessen (Art. 21 DSGVO)</li>
+        <li>Widerruf erteilter Einwilligungen mit Wirkung für die Zukunft (Art. 7 Abs. 3 DSGVO)</li>
+        <li>Beschwerde bei einer Aufsichtsbehörde (Art. 77 DSGVO)</li>
+      </ul>
+
+      <p>
+        Da viele Daten in tuneLINQ ausschließlich lokal verarbeitet werden, kann die Wahrnehmung bestimmter Rechte praktisch dadurch erfolgen,
+        dass Sie App‑Daten löschen oder die App deinstallieren. Für Datenverarbeitung durch Dritte (z.B. Google/AdMob oder Stream‑Anbieter)
+        sind deren Kontaktmöglichkeiten relevant.
+      </p>
+    </section>
+
+    <section id="sicherheit">
+      <h2>9. Datensicherheit</h2>
+      <p>
+        Es werden angemessene technische und organisatorische Maßnahmen eingesetzt, um App‑Daten vor unbefugtem Zugriff zu schützen.
+        Bitte beachten Sie, dass bei der Kommunikation mit externen Diensten (z.B. Streams, Werbe‑SDK) Risiken des Internetverkehrs bestehen.
+      </p>
+      <p>
+        Bei der lokalen Sync‑Funktion erfolgt die Kommunikation mit dem von Ihnen gewählten PC‑Server. Stellen Sie sicher, dass Ihr Netzwerk
+        angemessen geschützt ist (z.B. WPA2/WPA3 im WLAN).
+      </p>
+    </section>
+
+    <section id="aenderungen">
+      <h2>10. Änderungen dieser Datenschutzerklärung</h2>
+      <p>
+        Diese Datenschutzerklärung kann angepasst werden, wenn sich die App‑Funktionen oder die Rechtslage ändern.
+        Die jeweils aktuelle Version sollte innerhalb der App bzw. an der Stelle verfügbar sein, an der Sie diese Datei einbinden.
+      </p>
+    </section>
+
+    <section id="kontakt">
+      <h2>11. Kontakt</h2>
+      <p>
+        Für Datenschutzanfragen nutzen Sie bitte die Kontaktadresse des Verantwortlichen:
+      </p>
+      <ul>
+        <li>E‑Mail: <code>daniel.spatkowski@outlook.de</code> </li>
+        <li>Website (optional): <code>https://example.com</code> </li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>
+
+    </p>
+  </footer>
+</body>
+</html>
