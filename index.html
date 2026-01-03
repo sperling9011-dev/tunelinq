@@ -9,7 +9,7 @@
 
   <!-- Open Graph / Social Preview -->
   <meta property="og:title" content="tuneLINQ – Musik- & Videoplayer ohne Werbung" />
-  <meta property="og:description" content="Live FFT-Visualizer, Warteschlange, Playlists, Ordner, Radio, Android Auto. Keine Werbung. Kein Abo. Keine In‑App‑Käufe." />
+  <meta property="og:description" content="Live FFT-Visualizer, Warteschlange, Playlists, Ordner, Radio, Android Auto. Keine Werbung. Kein Abo. Keine In-App-Käufe." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="1.png" />
 
@@ -93,11 +93,14 @@
     .brand{
       display:flex; align-items:center; gap:12px; min-width: 170px;
     }
-    .logo{
+    .logoImg{
       width: 34px; height:34px;
       border-radius: 12px;
+      display:block;
+      object-fit: cover;
       background: linear-gradient(135deg, rgba(182,224,58,.95), rgba(107,220,255,.70));
       box-shadow: 0 12px 26px rgba(0,0,0,.35);
+      border: 1px solid rgba(255,255,255,.18);
     }
     .brand b{ font-size: 16px; letter-spacing:.4px; }
     .brand span{ font-size: 12px; color: var(--muted); display:block; margin-top: -2px; }
@@ -386,7 +389,7 @@
     <div class="wrap">
       <div class="nav">
         <a class="brand" href="#top" aria-label="tuneLINQ Start">
-          <div class="logo" aria-hidden="true"></div>
+          <img class="logoImg" src="tunelinq-android-app.png" alt="tuneLINQ App-Icon" />
           <div>
             <b>tuneLINQ</b>
             <span>Musik & Video. Offline & Radio.</span>
@@ -403,9 +406,9 @@
         </nav>
 
         <div class="actions">
-          <!-- TODO: Ersetze die Links durch deine echten Ziele (Play Store, GitHub Repo, etc.) -->
+          <!-- TODO: Optional GitHub-Link anpassen -->
           <a class="btn ghost" href="https://github.com/" target="_blank" rel="noreferrer">GitHub</a>
-          <a class="btn primary" href="#download">Download</a>
+          <a class="btn primary" href="https://play.google.com/store/apps/details?id=com.danielspatkowski.tunelinq" target="_blank" rel="noreferrer">Download</a>
         </div>
       </div>
     </div>
@@ -415,26 +418,24 @@
     <section class="hero" aria-label="Hero">
       <div class="heroGrid">
         <div>
-          <span class="pill"><span class="dot" aria-hidden="true"></span> Kein Abo. Keine Werbung. Keine In‑App‑Käufe.</span>
+          <span class="pill"><span class="dot" aria-hidden="true"></span> Kein Abo. Keine Werbung. Keine In-App-Käufe.</span>
           <h1>Dein Player – vielseitig, schnell und privat.</h1>
           <p class="lead">
-            <b>tuneLINQ</b> ist ein moderner Musik- und Videoplayer mit Live FFT‑Visualizer, Warteschlange,
-            Playlists, Ordner‑Ansicht, Radio und Android Auto. Fokus: Bedienung, Performance und Datenschutz.
+            <b>tuneLINQ</b> ist ein moderner Musik- und Videoplayer mit Live FFT-Visualizer, Warteschlange,
+            Playlists, Ordner-Ansicht, Radio und Android Auto. Fokus: Bedienung, Performance und Datenschutz.
           </p>
 
           <div class="heroCtas" id="download">
-            <!-- TODO: Link zum Play Store eintragen -->
-            <a class="btn primary" href="#" onclick="return false" title="Play Store Link eintragen">Play Store (Link eintragen)</a>
-            <!-- Optional: APK / Releases -->
-            <a class="btn" href="#" onclick="return false">Release / APK (optional)</a>
+            <a class="btn primary" href="https://play.google.com/store/apps/details?id=com.danielspatkowski.tunelinq" target="_blank" rel="noreferrer">Im Play Store öffnen</a>
           </div>
+
           <div class="micro">
-            Tipp: In GitHub Pages kannst du Links später einfach anpassen. Die Seite ist komplett „static“ (kein Build nötig).
+            Tipp: Diese Seite ist komplett „static“ (kein Build nötig) und ideal für GitHub Pages.
           </div>
 
           <div class="kpis" aria-label="Highlights">
             <div class="kpi">
-              <b>Live FFT‑Visualizer</b>
+              <b>Live FFT-Visualizer</b>
               <span>Direkt im Player – flüssig und klar.</span>
             </div>
             <div class="kpi">
@@ -448,7 +449,7 @@
           </div>
 
           <p class="micro">
-            * Erfordert lokales WLAN und den „tuneLINQ Sync‑Helper“ (kostenlos verfügbar).
+            * Erfordert lokales WLAN und den „tuneLINQ Sync-Helper“ (kostenlos verfügbar).
           </p>
         </div>
 
@@ -473,8 +474,8 @@
           <div class="icon" aria-hidden="true">
             <svg viewBox="0 0 24 24"><path d="M3 3h2v18H3V3zm4 10h2v8H7v-8zm4-6h2v14h-2V7zm4 4h2v10h-2V11zm4-8h2v18h-2V3z"/></svg>
           </div>
-          <h3>Live FFT‑Visualizer</h3>
-          <p>Reagiert in Echtzeit auf die Musik und sorgt für ein modernes Player‑Feeling.</p>
+          <h3>Live FFT-Visualizer</h3>
+          <p>Reagiert in Echtzeit auf die Musik und sorgt für ein modernes Player-Feeling.</p>
         </div>
 
         <div class="card">
@@ -497,7 +498,7 @@
           <div class="icon" aria-hidden="true">
             <svg viewBox="0 0 24 24"><path d="M10 4H4v16h16V8h-8l-2-4zm1 5h9v10H4V5h5l2 4z"/></svg>
           </div>
-          <h3>Ordner‑Ansicht</h3>
+          <h3>Ordner-Ansicht</h3>
           <p>Listet alle Ordner, in denen Musik vorhanden ist – ideal für lokale Bibliotheken.</p>
         </div>
 
@@ -505,7 +506,7 @@
           <div class="icon" aria-hidden="true">
             <svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 0 0-9 9h2a7 7 0 1 1 7 7v2a9 9 0 0 0 0-18zm1 5h-2v6l5 3 1-1.7-4-2.3V8z"/></svg>
           </div>
-          <h3>Radio‑Streaming</h3>
+          <h3>Radio-Streaming</h3>
           <p>Deutsche Radiosender streamen oder eigene Streams hinzufügen.</p>
         </div>
 
@@ -514,7 +515,7 @@
             <svg viewBox="0 0 24 24"><path d="M4 6h16v12H4V6zm2 2v8h12V8H6zm7 10h5v2h-5v-2z"/></svg>
           </div>
           <h3>Videoplayer</h3>
-          <p>Gestensteuerung inklusive: Pinch‑to‑Zoom und Swipe‑to‑Seek.</p>
+          <p>Gestensteuerung inklusive: Pinch-to-Zoom und Swipe-to-Seek.</p>
         </div>
       </div>
     </section>
@@ -527,8 +528,7 @@
             Wenn du einen Player suchst, der einfach funktioniert – ohne Werbung und ohne Abo – ist tuneLINQ genau dafür gebaut.
           </p>
         </div>
-        <!-- TODO: Play Store Link einsetzen -->
-        <a class="btn primary" href="#" onclick="return false">Zum Play Store (Link eintragen)</a>
+        <a class="btn primary" href="https://play.google.com/store/apps/details?id=com.danielspatkowski.tunelinq" target="_blank" rel="noreferrer">Zum Play Store</a>
       </div>
     </section>
 
@@ -541,9 +541,9 @@
       </div>
 
       <div class="gallery" id="gallery">
-        <figure class="shot" data-full="2.png" data-caption="Live FFT‑Visualizer – modernes Design, einfache Bedienung">
+        <figure class="shot" data-full="2.png" data-caption="Live FFT-Visualizer – modernes Design, einfache Bedienung">
           <img src="2.png" alt="Live FFT-Visualizer Screenshot" loading="lazy" />
-          <figcaption>Live FFT‑Visualizer</figcaption>
+          <figcaption>Live FFT-Visualizer</figcaption>
         </figure>
 
         <figure class="shot" data-full="7.png" data-caption="Anpassbare Warteschlange – Titel hinzufügen oder Reihenfolge ändern">
@@ -558,20 +558,20 @@
 
         <figure class="shot" data-full="5.png" data-caption="Ordneransicht – listet alle Ordner mit Musik">
           <img src="5.png" alt="Ordneransicht Screenshot" loading="lazy" />
-          <figcaption>Ordner‑Ansicht</figcaption>
+          <figcaption>Ordner-Ansicht</figcaption>
         </figure>
 
         <figure class="shot" data-full="6.png" data-caption="Radio – deutsche Sender streamen oder eigene Streams hinzufügen">
           <img src="6.png" alt="Radio Screenshot" loading="lazy" />
-          <figcaption>Radio‑Streaming</figcaption>
+          <figcaption>Radio-Streaming</figcaption>
         </figure>
 
-        <figure class="shot" data-full="10.png" data-caption="Videoplayer – Pinch‑to‑Zoom & Swipe‑to‑Seek">
+        <figure class="shot" data-full="10.png" data-caption="Videoplayer – Pinch-to-Zoom & Swipe-to-Seek">
           <img src="10.png" alt="Videoplayer Screenshot" loading="lazy" />
           <figcaption>Videoplayer</figcaption>
         </figure>
 
-        <figure class="shot" data-full="4.png" data-caption="Kabelloses Synchronisieren von Playlists und Musikordnern (lokales WLAN + Sync‑Helper)">
+        <figure class="shot" data-full="4.png" data-caption="Kabelloses Synchronisieren von Playlists und Musikordnern (lokales WLAN + Sync-Helper)">
           <img src="4.png" alt="Synchronisieren Screenshot" loading="lazy" />
           <figcaption>Sync vom PC</figcaption>
         </figure>
@@ -581,7 +581,7 @@
           <figcaption>Android Auto</figcaption>
         </figure>
 
-        <figure class="shot" data-full="8.png" data-caption="Ohne Werbung, ohne Abo, ohne In‑App‑Käufe, ohne Datensammeln">
+        <figure class="shot" data-full="8.png" data-caption="Ohne Werbung, ohne Abo, ohne In-App-Käufe, ohne Datensammeln">
           <img src="8.png" alt="Keine Werbung Screenshot" loading="lazy" />
           <figcaption>Keine Werbung</figcaption>
         </figure>
@@ -616,7 +616,7 @@
           <div class="icon" aria-hidden="true">
             <svg viewBox="0 0 24 24"><path d="M3 6h18v2H3V6zm0 5h18v2H3v-2zm0 5h18v2H3v-2z"/></svg>
           </div>
-          <h3>Keine In‑App‑Käufe</h3>
+          <h3>Keine In-App-Käufe</h3>
           <p>Der Funktionsumfang steht ohne Paywall bereit.</p>
         </div>
 
@@ -646,7 +646,7 @@
 
         <details>
           <summary>Welche Musikquellen werden unterstützt?</summary>
-          <p>Lokale Musikdateien auf dem Gerät sowie Radio-Streams und einige Video-Streams. Zusätzlich ist ein Sync vom PC im lokalen WLAN möglich (mit Sync‑Helper).</p>
+          <p>Lokale Musikdateien auf dem Gerät sowie Radio-Streams und einige Video-Streams. Zusätzlich ist ein Sync vom PC im lokalen WLAN möglich (mit Sync-Helper).</p>
         </details>
 
         <details>
@@ -656,7 +656,7 @@
 
         <details>
           <summary>Wie kann ich Kontakt aufnehmen?</summary>
-          <p>Unten im Footer kannst du einen Kontakt-Link (E‑Mail oder GitHub Issues) eintragen.</p>
+          <p>Unten im Footer kannst du einen Kontakt-Link (E-Mail oder GitHub Issues) eintragen.</p>
         </details>
       </div>
     </section>
@@ -672,7 +672,7 @@
           <!-- TODO: Links anpassen -->
           <div><a href="https://github.com/" target="_blank" rel="noreferrer">GitHub</a></div>
           <div><a href="#" onclick="return false">Kontakt</a></div>
-          <div><a href="#" onclick="return false">Datenschutz</a></div>
+          <div><a href="Datenschutz.html">Datenschutz</a></div>
         </div>
       </div>
     </footer>
