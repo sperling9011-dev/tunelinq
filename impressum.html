@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="dark light" />
+  <title>Impressum – tuneLINQ</title>
+  <meta name="description" content="Impressum für tuneLINQ – Anbieterkennzeichnung und Kontakt." />
+
+  <style>
+    :root{
+      --bg0:#0b0c0f;
+      --bg1:#11131a;
+      --card:#141824;
+      --card2:#0f1220;
+      --text:#eef2ff;
+      --muted:#a7b0c7;
+      --line:rgba(255,255,255,.10);
+      --accent:#b6e03a;
+      --accent2:#6bdcff;
+      --shadow: 0 18px 60px rgba(0,0,0,.55);
+      --radius: 18px;
+      --radius2: 26px;
+      --maxw: 1120px;
+    }
+
+    @media (prefers-color-scheme: light){
+      :root{
+        --bg0:#f6f7fb;
+        --bg1:#ffffff;
+        --card:#ffffff;
+        --card2:#f3f5fb;
+        --text:#111427;
+        --muted:#4a526b;
+        --line:rgba(10,20,40,.14);
+        --shadow: 0 18px 60px rgba(0,0,0,.12);
+      }
+    }
+
+    *{ box-sizing: border-box; }
+    html{ scroll-behavior:smooth; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(1200px 700px at 10% 0%, rgba(182,224,58,.18), transparent 60%),
+        radial-gradient(900px 600px at 90% 10%, rgba(107,220,255,.13), transparent 55%),
+        linear-gradient(180deg, var(--bg0), var(--bg1));
+      line-height:1.55;
+    }
+
+    a{ color:inherit; text-decoration:none; }
+    a:focus-visible, button:focus-visible{
+      outline: 3px solid rgba(182,224,58,.55);
+      outline-offset: 3px;
+      border-radius: 12px;
+    }
+
+    .wrap{ max-width:var(--maxw); margin:0 auto; padding: 0 20px; }
+
+    header{
+      position: sticky; top:0; z-index:10;
+      backdrop-filter: blur(10px);
+      background: rgba(10,12,18,.70);
+      border-bottom: 1px solid var(--line);
+    }
+    @media (prefers-color-scheme: light){
+      header{ background: rgba(255,255,255,.72); }
+    }
+
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+      padding: 14px 0;
+      gap: 18px;
+    }
+
+    .brand{
+      display:flex; align-items:center; gap:12px; min-width: 170px;
+    }
+    .logoImg{
+      width: 34px; height:34px;
+      border-radius: 12px;
+      display:block;
+      object-fit: cover;
+      background: linear-gradient(135deg, rgba(182,224,58,.95), rgba(107,220,255,.70));
+      box-shadow: 0 12px 26px rgba(0,0,0,.35);
+      border: 1px solid rgba(255,255,255,.18);
+    }
+    .brand b{ font-size: 16px; letter-spacing:.4px; }
+    .brand span{ font-size: 12px; color: var(--muted); display:block; margin-top: -2px; }
+
+    .actions{ display:flex; gap: 10px; align-items:center; justify-content:flex-end; min-width: 190px; flex-wrap: wrap; }
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      padding: 11px 14px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.05);
+      color: var(--text);
+      font-weight: 700;
+      font-size: 13px;
+      cursor:pointer;
+      transition: transform .08s ease, background .2s ease, border-color .2s ease;
+      user-select:none;
+      white-space: nowrap;
+    }
+    .btn:hover{ background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.18); }
+    .btn:active{ transform: translateY(1px); }
+    .btn.primary{
+      background: linear-gradient(135deg, rgba(182,224,58,.92), rgba(182,224,58,.72));
+      border-color: rgba(182,224,58,.65);
+      color: #0b0c0f;
+      box-shadow: 0 16px 34px rgba(182,224,58,.18);
+    }
+    .btn.primary:hover{ filter: brightness(1.02); }
+    .btn.ghost{ background: transparent; }
+
+    main{ padding: 28px 0 42px; }
+
+    h1{
+      font-size: clamp(28px, 3.2vw, 42px);
+      line-height: 1.15;
+      margin: 10px 0 6px;
+      letter-spacing: -.4px;
+    }
+    .lead{
+      margin: 0 0 18px;
+      color: var(--muted);
+      font-size: 14px;
+      max-width: 80ch;
+    }
+
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      border: 1px solid var(--line);
+      border-radius: var(--radius2);
+      padding: 18px;
+      box-shadow: 0 10px 26px rgba(0,0,0,.20);
+      position: relative;
+      overflow:hidden;
+    }
+    .card:before{
+      content:"";
+      position:absolute; inset:-80px -80px auto auto;
+      width: 160px; height: 160px;
+      background: radial-gradient(circle at 30% 30%, rgba(182,224,58,.26), transparent 60%);
+      transform: rotate(18deg);
+      pointer-events:none;
+    }
+
+    .section{
+      margin-top: 14px;
+      display:grid;
+      gap: 12px;
+    }
+
+    .block{
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      padding: 14px 14px;
+    }
+
+    h2{
+      font-size: 16px;
+      margin: 0 0 6px;
+      letter-spacing: -.1px;
+    }
+    p{ margin: 0; color: var(--muted); font-size: 13px; }
+    .mono{ font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
+
+    .kv{
+      display:grid;
+      grid-template-columns: 160px 1fr;
+      gap: 10px 14px;
+      margin-top: 8px;
+      align-items:start;
+    }
+    @media (max-width: 560px){
+      .kv{ grid-template-columns: 1fr; }
+    }
+    .k{ color: var(--text); font-weight: 800; font-size: 13px; }
+    .v{ color: var(--muted); font-size: 13px; }
+    .v a{ text-decoration: underline; text-underline-offset: 2px; }
+
+    footer{
+      padding: 22px 0 36px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 28px;
+    }
+    .foot{
+      display:flex; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+    }
+    .foot a{ text-decoration: underline; text-underline-offset: 2px; }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="wrap">
+      <div class="nav">
+        <a class="brand" href="index.html#top" aria-label="Zurück zur Startseite">
+          <img class="logoImg" src="tunelinq-android-app.png" alt="tuneLINQ App-Icon" />
+          <div>
+            <b>tuneLINQ</b>
+            <span>Musik & Video. Offline & Radio.</span>
+          </div>
+        </a>
+
+        <div class="actions">
+          <a class="btn ghost" href="index.html#top">Zur Startseite</a>
+          <a class="btn primary" href="https://play.google.com/store/apps/details?id=com.danielspatkowski.tunelinq" target="_blank" rel="noreferrer">Play Store</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="card" role="region" aria-label="Impressum">
+      <h1>Impressum</h1>
+      <p class="lead">
+        Anbieterkennzeichnung und Kontaktangaben für diese Website bzw. das Projekt <b>tuneLINQ</b>.
+      </p>
+
+      <div class="section">
+
+        <div class="block" aria-label="Angaben gemäß DDG">
+          <h2>Angaben gemäß § 5 Digitale-Dienste-Gesetz (DDG)</h2>
+          <div class="kv" role="list">
+            <div class="k" role="listitem">Anbieter</div>
+            <div class="v"><b style="color:var(--text)">Daniel Spatkowski</b></div>
+
+            <div class="k" role="listitem">Anschrift</div>
+            <div class="v">
+              Kaiserstr. 15<br />
+              47441 Moers<br />
+              Deutschland
+            </div>
+
+            <div class="k" role="listitem">Kontakt</div>
+            <div class="v">
+              E-Mail:
+              <a href="mailto:daniel.spatkowski@outlook.de">daniel.spatkowski@outlook.de</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="block" aria-label="Verantwortlich für Inhalte">
+          <h2>Verantwortlich für den Inhalt gemäß § 18 Abs. 2 MStV</h2>
+          <p>
+            Daniel Spatkowski, Kaiserstr. 15, 47441 Moers, Deutschland.
+          </p>
+        </div>
+
+        <div class="block" aria-label="Haftung für Inhalte">
+          <h2>Haftung für Inhalte</h2>
+          <p>
+            Als Diensteanbieter bin ich für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich.
+            Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte kann jedoch keine Gewähr übernommen werden.
+          </p>
+        </div>
+
+        <div class="block" aria-label="Haftung für Links">
+          <h2>Haftung für Links</h2>
+          <p>
+            Diese Website enthält ggf. Links zu externen Websites Dritter, auf deren Inhalte ich keinen Einfluss habe.
+            Deshalb kann ich für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten
+            ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich.
+          </p>
+        </div>
+
+        <div class="block" aria-label="Urheberrecht">
+          <h2>Urheberrecht</h2>
+          <p>
+            Die durch den Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht.
+            Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechts
+            bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers.
+          </p>
+        </div>
+
+        <div class="block" aria-label="Verbraucherstreitbeilegung">
+          <h2>Verbraucherstreitbeilegung</h2>
+          <p>
+            Ich bin nicht verpflichtet und nicht bereit, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.
+          </p>
+          <p style="margin-top:10px">
+            Hinweis: Die EU-Plattform zur Online-Streitbeilegung (ODR) wurde zum <span class="mono">20.07.2025</span> eingestellt.
+          </p>
+        </div>
+
+        <div class="block" aria-label="Weiteres">
+          <h2>Weitere Hinweise</h2>
+          <p>
+            Datenschutzinformationen findest du unter <a href="datenschutz.html" style="text-decoration: underline; text-underline-offset: 2px;">datenschutz.html</a>.
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+    <footer aria-label="Footer">
+      <div class="foot">
+        <div>
+          <div><b style="color:var(--text)">tuneLINQ</b> <span>– Musik & Video ohne Werbung</span></div>
+          <div style="margin-top:6px">© <span id="year"></span> – Daniel Spatkowski</div>
+        </div>
+
+        <div>
+          <div><a href="index.html#top">Start</a></div>
+          <div><a href="datenschutz.html">Datenschutz</a></div>
+          <div><a href="impressum.html">Impressum</a></div>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
