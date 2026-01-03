@@ -62,6 +62,12 @@
     a{ color:inherit; text-decoration:none; }
     a:focus-visible, button:focus-visible{ outline: 3px solid rgba(182,224,58,.55); outline-offset: 3px; border-radius: 12px; }
 
+    /* Link-Optik für Sync-Helper-Verweise */
+    .syncLink{
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
     .wrap{ max-width:var(--maxw); margin:0 auto; padding: 0 20px; }
     .pill{
       display:inline-flex; align-items:center; gap:10px;
@@ -429,8 +435,6 @@
             <a class="btn primary" href="https://play.google.com/store/apps/details?id=com.danielspatkowski.tunelinq" target="_blank" rel="noreferrer">Im Play Store öffnen</a>
           </div>
 
-
-
           <div class="kpis" aria-label="Highlights">
             <div class="kpi">
               <b>Live FFT-Visualizer</b>
@@ -447,7 +451,11 @@
           </div>
 
           <p class="micro">
-            * Erfordert lokales WLAN und den „tuneLINQ Sync-Helper“ (kostenlos im Microsoft-Store verfügbar).
+            * Erfordert lokales WLAN und den
+            <a class="syncLink" href="https://sperling9011-dev.github.io/tunelinq-sync-helper/" target="_blank" rel="noreferrer">
+              „tuneLINQ Sync-Helper“
+            </a>
+            (kostenlos im Microsoft-Store verfügbar).
           </p>
         </div>
 
@@ -644,14 +652,20 @@
 
         <details>
           <summary>Welche Musikquellen werden unterstützt?</summary>
-          <p>Lokale Musikdateien auf dem Gerät sowie Radio-Streams und einige Video-Streams. Zusätzlich ist ein Sync vom PC im lokalen WLAN möglich (mit Sync-Helper).</p>
+          <p>
+            Lokale Musikdateien auf dem Gerät sowie Radio-Streams und einige Video-Streams.
+            Zusätzlich ist ein Sync vom PC im lokalen WLAN möglich (mit
+            <a class="syncLink" href="https://sperling9011-dev.github.io/tunelinq-sync-helper/" target="_blank" rel="noreferrer">
+              Sync-Helper
+            </a>
+            ).
+          </p>
         </details>
 
         <details>
           <summary>Funktioniert Android Auto?</summary>
           <p>Ja – du kannst sogar auswählen, welche Playlist/Ordner/Radiofavorit beim Start von Android Auto automatisch startet.</p>
         </details>
-
       </div>
     </section>
 
@@ -692,6 +706,74 @@
   <script>
     // Jahr im Footer
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Sync-Helper: überall wo "tuneLINQ Sync-Helper" im Fließtext steht, klickbar machen
+    // (Sicherheit: wir verlinken nur Textnodes, keine bestehenden Links/Buttons)
+    (function linkifySyncHelper(){
+      const SYNC_URL = "https://sperling9011-dev.github.io/tunelinq-sync-helper/";
+      const needles = [
+        "tuneLINQ Sync-Helper",
+        "„tuneLINQ Sync-Helper“",
+        "\"tuneLINQ Sync-Helper\"",
+        "tuneLINQ Sync-Helper",
+        "tuneLINQ Sync-Helper“",
+        "„tuneLINQ Sync-Helper"
+      ];
+
+      function shouldSkip(node){
+        if(!node || !node.parentElement) return true;
+        return node.parentElement.closest("a, button, script, style, code, pre, textarea") !== null;
+      }
+
+      function replaceInTextNode(textNode){
+        const text = textNode.nodeValue;
+        if(!text) return;
+
+        // Schnelltest
+        if(!needles.some(n => text.includes(n))) return;
+
+        // Wir zerlegen per RegExp, um möglichst alle Varianten mitzunehmen
+        // (inkl. normalem Bindestrich und ggf. schmalem/typographischem Bindestrich)
+        const re = /(„tuneLINQ Sync-Helper“|"tuneLINQ Sync-Helper"|tuneLINQ Sync-Helper|tuneLINQ Sync-Helper)/g;
+
+        const parts = text.split(re);
+        if(parts.length === 1) return;
+
+        const frag = document.createDocumentFragment();
+        for(const part of parts){
+          if(re.test(part)){
+            const a = document.createElement("a");
+            a.href = SYNC_URL;
+            a.target = "_blank";
+            a.rel = "noreferrer";
+            a.className = "syncLink";
+            a.textContent = part;
+            frag.appendChild(a);
+          }else{
+            frag.appendChild(document.createTextNode(part));
+          }
+          re.lastIndex = 0; // wichtig wegen global RegExp + test()
+        }
+
+        textNode.parentNode.replaceChild(frag, textNode);
+      }
+
+      // TreeWalker über den sichtbaren Bereich der Seite
+      const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+        acceptNode(node){
+          if(shouldSkip(node)) return NodeFilter.FILTER_REJECT;
+          // Keine reinen Whitespaces
+          if(!node.nodeValue || !node.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+          // Nur wenn Hinweis vorkommt
+          if(needles.some(n => node.nodeValue.includes(n))) return NodeFilter.FILTER_ACCEPT;
+          return NodeFilter.FILTER_SKIP;
+        }
+      });
+
+      const nodes = [];
+      while(walker.nextNode()) nodes.push(walker.currentNode);
+      nodes.forEach(replaceInTextNode);
+    })();
 
     // Lightbox Gallery
     const items = Array.from(document.querySelectorAll(".shot"));
