@@ -68,6 +68,12 @@
       text-underline-offset: 2px;
     }
 
+    /* Link-Optik für Testgruppe-Verweise */
+    .groupLink{
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
     .wrap{ max-width:var(--maxw); margin:0 auto; padding: 0 20px; }
     .pill{
       display:inline-flex; align-items:center; gap:10px;
@@ -310,6 +316,33 @@
     .callout p{ margin: 6px 0 0; color: var(--muted); font-size: 13px; max-width: 70ch; }
     .callout .btn.primary{ box-shadow: 0 18px 34px rgba(182,224,58,.20); }
 
+    /* Closed-Test Steps */
+    .steps{
+      border-radius: var(--radius2);
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      padding: 16px;
+      box-shadow: 0 12px 30px rgba(0,0,0,.16);
+    }
+    .steps ol{
+      margin: 10px 0 0;
+      padding-left: 18px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .steps li{ margin: 8px 0; }
+    .steps b{ color: var(--text); }
+    .note{
+      margin-top: 10px;
+      padding: 12px 14px;
+      border-radius: var(--radius);
+      border: 1px solid rgba(182,224,58,.30);
+      background: rgba(182,224,58,.10);
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .note b{ color: var(--text); }
+
     .faq{
       display:grid;
       gap: 10px;
@@ -406,15 +439,14 @@
           <ul>
             <li><a href="#features">Funktionen</a></li>
             <li><a href="#screens">Screenshots</a></li>
+            <li><a href="#test">Closed Test</a></li>
             <li><a href="#privacy">Privacy</a></li>
             <li><a href="#faq">FAQ</a></li>
           </ul>
         </nav>
 
         <div class="actions">
-          <!-- TODO: Optional GitHub-Link anpassen -->
-          <a class="btn ghost" href="https://github.com/" target="_blank" rel="noreferrer">GitHub</a>
-          <a class="btn primary" href="https://play.google.com/store/apps/details?id=com.danielspatkowski.tunelinq" target="_blank" rel="noreferrer">Download</a>
+          <a class="btn primary" href="https://groups.google.com/g/tunelinq-testgruppe/" target="_blank" rel="noreferrer">Closed Test: Zur Gruppe</a>
         </div>
       </div>
     </div>
@@ -432,7 +464,10 @@
           </p>
 
           <div class="heroCtas" id="download">
-            <a class="btn primary" href="https://play.google.com/store/apps/details?id=com.danielspatkowski.tunelinq" target="_blank" rel="noreferrer">Im Play Store öffnen</a>
+            <a class="btn primary" href="https://groups.google.com/g/tunelinq-testgruppe/" target="_blank" rel="noreferrer">
+              Beim Closed Test mitmachen
+            </a>
+            <a class="btn" href="#test">So funktioniert’s</a>
           </div>
 
           <div class="kpis" aria-label="Highlights">
@@ -457,10 +492,71 @@
             </a>
             (kostenlos im Microsoft-Store verfügbar).
           </p>
+
+          <p class="micro">
+            Closed Test läuft über die Google-Gruppe:
+            <a class="groupLink" href="https://groups.google.com/g/tunelinq-testgruppe/" target="_blank" rel="noreferrer">
+              groups.google.com/g/tunelinq-testgruppe
+            </a>
+          </p>
         </div>
 
         <div class="heroShot" aria-label="App Preview">
           <img src="1.png" alt="tuneLINQ – Übersicht der App-Funktionen" loading="eager" />
+        </div>
+      </div>
+    </section>
+
+    <section id="test" aria-label="Closed Test">
+      <div class="sectionHead">
+        <div>
+          <h2>Closed Test: In 2 Minuten dabei</h2>
+          <p class="sub">
+            Du hilfst, tuneLINQ stabiler und besser zu machen. Es ist unkompliziert – und Feedback ist ausdrücklich erwünscht.
+          </p>
+        </div>
+        <div>
+          <a class="btn primary" href="https://groups.google.com/g/tunelinq-testgruppe/" target="_blank" rel="noreferrer">Zur Testgruppe</a>
+        </div>
+      </div>
+
+      <div class="steps">
+        <b>So machst du mit:</b>
+        <ol>
+          <li>
+            <b>Der Gruppe beitreten:</b>
+            Öffne die
+            <a class="groupLink" href="https://groups.google.com/g/tunelinq-testgruppe/" target="_blank" rel="noreferrer">tuneLINQ Testgruppe</a>.
+            Wenn oben „Du bist kein Mitglied“ steht: nicht abschrecken lassen. Scrolle nach unten und klicke auf
+            <b>„Trete der Gruppe bei“</b>.
+          </li>
+          <li>
+            <b>App herunterladen:</b>
+            Nach dem Beitritt findest du in der Gruppe den Installations-/Testlink.
+            Hinweis: Es kann <b>einige Minuten bis zu ca. 1 Stunde</b> dauern, bis der Link nach Anmeldung zuverlässig funktioniert.
+          </li>
+          <li>
+            <b>Ausprobieren:</b>
+            App testen, Funktionen durchgehen (Player, Visualizer, Warteschlange, Playlists, Ordner, Radio, Android Auto).
+          </li>
+          <li>
+            <b>Feedback geben:</b>
+            Entweder direkt über Google Play (Feedback/Bewertung im Testkanal) oder in der Gruppe.
+            Fehler bitte in der Gruppe melden – idealerweise <b>mit Screenshots</b> und kurzer Beschreibung.
+          </li>
+          <li>
+            <b>Wichtig:</b> Bitte die App <b>mindestens 14 Tage installiert lassen</b>.
+            Für den Closed Test muss man mindestens 14 Tage opt-in sein.
+          </li>
+        </ol>
+
+        <div class="note">
+          <b>Tipp:</b> Wenn der Testlink direkt nach dem Gruppenbeitritt noch nicht klappt: später noch einmal versuchen (Caching/Sync bei Google).
+        </div>
+
+        <div style="margin-top:12px; display:flex; gap:12px; flex-wrap:wrap;">
+          <a class="btn primary" href="https://groups.google.com/g/tunelinq-testgruppe/" target="_blank" rel="noreferrer">Jetzt beitreten</a>
+          <a class="btn" href="#faq">FAQ ansehen</a>
         </div>
       </div>
     </section>
@@ -529,12 +625,12 @@
     <section aria-label="Download Callout">
       <div class="callout">
         <div>
-          <b>Bereit? tuneLINQ ausprobieren.</b>
+          <b>Bereit? Als Tester dabei sein.</b>
           <p>
-            Wenn du einen Player suchst, der einfach funktioniert – ohne Werbung und ohne Abo – ist tuneLINQ genau dafür gebaut.
+            tuneLINQ läuft aktuell im Closed Test. Der Einstieg ist über die Google-Gruppe möglich – dort findest du auch den Installationslink.
           </p>
         </div>
-        <a class="btn primary" href="https://play.google.com/store/apps/details?id=com.danielspatkowski.tunelinq" target="_blank" rel="noreferrer">Zum Play Store</a>
+        <a class="btn primary" href="https://groups.google.com/g/tunelinq-testgruppe/" target="_blank" rel="noreferrer">Zur Testgruppe</a>
       </div>
     </section>
 
@@ -651,6 +747,23 @@
         </details>
 
         <details>
+          <summary>Wie komme ich an die App, wenn es keinen öffentlichen Play-Store-Link gibt?</summary>
+          <p>
+            tuneLINQ ist aktuell im Closed Test. Bitte der Google-Gruppe beitreten:
+            <a class="groupLink" href="https://groups.google.com/g/tunelinq-testgruppe/" target="_blank" rel="noreferrer">tuneLINQ Testgruppe</a>.
+            In der Gruppe steht der Installations-/Testlink. Es kann einige Minuten bis zu ca. 1 Stunde dauern, bis der Link nach der Anmeldung zuverlässig funktioniert.
+          </p>
+        </details>
+
+        <details>
+          <summary>Ich sehe „Du bist kein Mitglied“ – was nun?</summary>
+          <p>
+            Das ist normal, solange du noch nicht beigetreten bist. Scrolle in der Gruppe nach unten und klicke auf
+            <b>„Trete der Gruppe bei“</b>. Danach erhältst du Zugriff auf den Testlink.
+          </p>
+        </details>
+
+        <details>
           <summary>Welche Musikquellen werden unterstützt?</summary>
           <p>
             Lokale Musikdateien auf dem Gerät sowie Radio-Streams und einige Video-Streams.
@@ -659,6 +772,21 @@
               Sync-Helper
             </a>
             ).
+          </p>
+        </details>
+
+        <details>
+          <summary>Wie soll ich Feedback oder Fehler melden?</summary>
+          <p>
+            Feedback gerne direkt über Google Play im Testkanal oder in der Gruppe.
+            Fehler bitte in der Gruppe posten – idealerweise mit <b>Screenshots</b>, Gerät/Android-Version und kurzer Repro-Beschreibung.
+          </p>
+        </details>
+
+        <details>
+          <summary>Muss ich die App wirklich 14 Tage installiert lassen?</summary>
+          <p>
+            Ja, bitte. Für den Closed Test musst du mindestens 14 Tage opt-in sein. Daher: App nicht deinstallieren, mindestens 14 Tage installiert lassen.
           </p>
         </details>
 
@@ -682,6 +810,9 @@
           <div><a href="#" onclick="return false">Kontakt</a></div>
           <div><a href="datenschutz.html">Datenschutz</a></div>
           <div><a href="impressum.html">Impressum</a></div>
+          <div style="margin-top:8px">
+            <a class="groupLink" href="https://groups.google.com/g/tunelinq-testgruppe/" target="_blank" rel="noreferrer">Closed Test: Testgruppe</a>
+          </div>
         </div>
       </div>
     </footer>
@@ -734,7 +865,6 @@
         if(!needles.some(n => text.includes(n))) return;
 
         // Wir zerlegen per RegExp, um möglichst alle Varianten mitzunehmen
-        // (inkl. normalem Bindestrich und ggf. schmalem/typographischem Bindestrich)
         const re = /(„tuneLINQ Sync-Helper“|"tuneLINQ Sync-Helper"|tuneLINQ Sync-Helper|tuneLINQ Sync-Helper)/g;
 
         const parts = text.split(re);
