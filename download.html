@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="dark light" />
+  <meta name="theme-color" content="#11131a" />
+  <title>tuneLINQ – APK-Download &amp; Android Auto</title>
+  <meta name="description" content="tuneLINQ APK direkt herunterladen. Installationshinweise und Schritt-für-Schritt-Anleitung für Android Auto und die Freigabe unbekannter Quellen." />
+  <style>
+    :root {
+      --bg0:#0b0c0f; --bg1:#11131a; --card:#141824; --text:#eef2ff;
+      --muted:#a7b0c7; --line:rgba(255,255,255,.10); --accent:#b6e03a;
+      --accent2:#6bdcff; --shadow:0 18px 60px rgba(0,0,0,.35);
+      --radius:18px; --radius2:26px; --maxw:920px;
+    }
+    @media (prefers-color-scheme: light) {
+      :root { --bg0:#f6f7fb; --bg1:#fff; --card:#fff; --text:#111427; --muted:#4a526b; --line:rgba(10,20,40,.14); --shadow:0 18px 60px rgba(0,0,0,.12); }
+      header { background:rgba(255,255,255,.82) !important; }
+      .warning { background:rgba(155,75,0,.07) !important; }
+    }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body {
+      margin:0; font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+      color:var(--text); line-height:1.6;
+      background:radial-gradient(1000px 620px at 10% 0%,rgba(182,224,58,.16),transparent 60%),
+                 radial-gradient(780px 560px at 90% 5%,rgba(107,220,255,.12),transparent 55%),
+                 linear-gradient(180deg,var(--bg0),var(--bg1));
+    }
+    a { color:inherit; text-underline-offset:3px; }
+    a:focus-visible,button:focus-visible { outline:3px solid rgba(182,224,58,.7); outline-offset:3px; border-radius:10px; }
+    .wrap { width:min(calc(100% - 36px),var(--maxw)); margin:0 auto; }
+    header { position:sticky;top:0;z-index:10;backdrop-filter:blur(12px);background:rgba(10,12,18,.78);border-bottom:1px solid var(--line); }
+    .nav { min-height:66px;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:10px 0; }
+    .brand { display:flex;align-items:center;gap:10px;text-decoration:none;min-width:0; }
+    .logo { width:36px;height:36px;object-fit:cover;border-radius:12px;border:1px solid var(--line); }
+    .brand b { display:block;font-size:16px;letter-spacing:.3px; }
+    .brand span { display:block;color:var(--muted);font-size:12px; }
+    .navlinks { display:flex;align-items:center;gap:10px;flex-wrap:wrap; }
+    .navlinks a { color:var(--muted);font-weight:650;font-size:13px;padding:8px 10px;border-radius:10px;text-decoration:none; }
+    .navlinks a:hover { color:var(--text);background:rgba(255,255,255,.06); }
+    .btn { display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:12px 16px;border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.04);color:var(--text);font-weight:750;font-size:14px;text-decoration:none;transition:transform .1s ease,background .2s ease; }
+    .btn:hover { background:rgba(255,255,255,.09);transform:translateY(-1px); }
+    .btn.primary { background:linear-gradient(135deg,rgba(182,224,58,.96),rgba(182,224,58,.78));color:#0b0c0f;border-color:rgba(182,224,58,.65);box-shadow:0 14px 30px rgba(182,224,58,.15); }
+    main { padding:32px 0 56px; }
+    .hero { padding:clamp(28px,5vw,54px);border:1px solid var(--line);border-radius:var(--radius2);background:linear-gradient(145deg,rgba(255,255,255,.055),rgba(255,255,255,.02));box-shadow:var(--shadow); }
+    .eyebrow { display:inline-flex;align-items:center;gap:9px;margin:0 0 12px;color:var(--accent);font-size:12px;font-weight:850;letter-spacing:.13em;text-transform:uppercase; }
+    .dot { width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px rgba(182,224,58,.15); }
+    h1 { margin:0 0 14px;font-size:clamp(32px,5vw,50px);line-height:1.1;letter-spacing:-.7px; }
+    h2 { margin:0 0 12px;font-size:clamp(21px,3vw,27px);line-height:1.2;letter-spacing:-.3px; }
+    h3 { margin:0 0 6px;font-size:16px; }
+    p { margin:0 0 13px; }
+    .lead { color:var(--muted);font-size:16px;max-width:70ch; }
+    .actions { display:flex;flex-wrap:wrap;gap:11px;margin:22px 0 0; }
+    .small { color:var(--muted);font-size:13px; }
+    .panel { margin-top:18px;padding:22px;border:1px solid var(--line);border-radius:var(--radius);background:rgba(255,255,255,.03); }
+    .warning { border-color:rgba(255,174,87,.45);background:rgba(255,137,40,.08); }
+    .warning strong { color:var(--text); }
+    .steps { counter-reset:step;display:grid;gap:14px;margin:14px 0 0;padding:0;list-style:none; }
+    .steps li { counter-increment:step;position:relative;padding:2px 0 2px 48px;min-height:34px;color:var(--muted); }
+    .steps li::before { content:counter(step);position:absolute;left:0;top:0;display:grid;place-items:center;width:32px;height:32px;border-radius:11px;border:1px solid rgba(182,224,58,.3);background:rgba(182,224,58,.12);color:var(--accent);font-weight:850; }
+    .steps b { color:var(--text); }
+    .note { margin-top:14px;padding:14px 16px;border:1px solid rgba(182,224,58,.28);border-radius:14px;background:rgba(182,224,58,.07);color:var(--muted);font-size:13px; }
+    code { overflow-wrap:anywhere;padding:2px 5px;border-radius:6px;background:rgba(127,127,127,.13);border:1px solid var(--line); }
+    footer { padding:24px 0 34px;border-top:1px solid var(--line);color:var(--muted);font-size:12px; }
+    .foot { display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap; }
+    @media (max-width:620px) { .nav { align-items:flex-start;flex-direction:column; } .navlinks { gap:2px; } .hero { padding:24px 18px; } .panel { padding:18px; } .actions .btn { width:100%; } }
+    @media (prefers-reduced-motion:reduce) { html{scroll-behavior:auto} *,*::before,*::after{transition-duration:.01ms !important} }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="index.html" aria-label="tuneLINQ Android Startseite">
+        <img class="logo" src="tunelinq-android-app.png" alt="tuneLINQ App-Icon" />
+        <div><b>tuneLINQ</b><span>APK-Download &amp; Installationshilfe</span></div>
+      </a>
+      <nav class="navlinks" aria-label="Seitennavigation">
+        <a href="index.html">Startseite</a>
+        <a href="index.html#features">Funktionen</a>
+        <a href="index.html#test">Closed Test</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero" aria-labelledby="page-title">
+      <p class="eyebrow"><span class="dot" aria-hidden="true"></span> Direkter Download</p>
+      <h1 id="page-title">tuneLINQ als APK herunterladen</h1>
+      <p class="lead">Hier kannst du tuneLINQ direkt als Android-Installationsdatei herunterladen. Die APK wird außerhalb von Google Play installiert. Deshalb sind einige zusätzliche Schritte nötig – besonders, wenn du tuneLINQ mit Android Auto verwenden möchtest.</p>
+      <div class="actions">
+        <a class="btn primary" href="Downloads/tuneLINQ.apk" download>⬇ APK direkt herunterladen</a>
+        <a class="btn" href="index.html">Zur tuneLINQ-Website</a>
+      </div>
+      <p class="small" style="margin-top:12px">Datei: <code>Downloads/tuneLINQ.apk</code>. Lade APK-Dateien nur aus einer Quelle herunter, der du vertraust.</p>
+    </section>
+
+    <section class="panel warning" aria-labelledby="aa-warning">
+      <h2 id="aa-warning">Wichtiger Hinweis zu Android Auto</h2>
+      <p>Wird tuneLINQ per APK statt über Google Play installiert, kann Android Auto die App zunächst ausblenden oder nicht im App-Launcher anzeigen. In diesem Fall muss auf dem Smartphone in den Android-Auto-Entwicklereinstellungen die Option <strong>„Unbekannte Quellen“</strong> aktiviert werden.</p>
+      <p>Diese Android-Auto-Freigabe ist unabhängig von der Android-Sicherheitseinstellung, die das Installieren von APK-Dateien aus Browser oder Dateimanager erlaubt. Die Freigabe kann die Anzeige ermöglichen, garantiert aber nicht, dass tuneLINQ auf jeder Android-Auto-Version oder in jedem Fahrzeug angezeigt wird.</p>
+    </section>
+
+    <section class="panel" aria-labelledby="install-title">
+      <h2 id="install-title">1. APK installieren</h2>
+      <ol class="steps">
+        <li><b>APK herunterladen:</b> Tippe oben auf „APK direkt herunterladen“ und öffne anschließend die heruntergeladene Datei.</li>
+        <li><b>Installation erlauben:</b> Android kann fragen, ob dein Browser oder Dateimanager Apps installieren darf. Öffne bei Bedarf die angezeigten Einstellungen und aktiviere <b>„Apps aus dieser Quelle zulassen“</b> bzw. <b>„Unbekannte Apps installieren“</b> für genau diese App.</li>
+        <li><b>Installation abschließen:</b> Kehre zur APK zurück, bestätige die Installation und öffne tuneLINQ anschließend einmal auf dem Smartphone.</li>
+      </ol>
+      <div class="note"><b>Hinweis:</b> Die Bezeichnungen und Menüpunkte können je nach Hersteller und Android-Version etwas anders lauten. Erlaube die Installation nur für die Quelle, von der du die APK geöffnet hast.</div>
+    </section>
+
+    <section class="panel" aria-labelledby="developer-title">
+      <h2 id="developer-title">2. „Unbekannte Quellen“ in Android Auto freigeben</h2>
+      <p class="small">Die Einstellung wird in Android Auto auf dem Smartphone vorgenommen – nicht im Fahrzeugdisplay.</p>
+      <ol class="steps">
+        <li><b>Android-Auto-Einstellungen öffnen.</b> Öffne auf dem Smartphone die Android-Einstellungen und suche nach <b>„Android Auto“</b>. Je nach Gerät liegt der Eintrag beispielsweise unter „Verbundene Geräte“ oder „Verbindungen“. Öffne die Einstellungen von Android Auto.</li>
+        <li><b>Entwicklermodus aktivieren.</b> Scrolle in den Android-Auto-Einstellungen bis ganz nach unten zum Eintrag <b>„Version“</b>. Tippe mehrmals hintereinander auf „Version“ – üblicherweise etwa 7 bis 10 Mal –, bis eine Meldung erscheint, dass der Entwicklermodus aktiviert wurde. Bestätige eine Nachfrage gegebenenfalls.</li>
+        <li><b>Entwicklereinstellungen öffnen.</b> Tippe oben rechts auf das <b>Drei-Punkte-Menü (⋮)</b> und wähle <b>„Entwicklereinstellungen“</b> bzw. „Developer settings“.</li>
+        <li><b>Unbekannte Quellen einschalten.</b> Suche in den Entwicklereinstellungen nach <b>„Unbekannte Quellen“</b> („Unknown sources“) und aktiviere das Kontrollkästchen bzw. den Schalter. Die Option befindet sich meist weit unten in der Liste.</li>
+        <li><b>Android Auto neu starten.</b> Schließe Android Auto, trenne die Verbindung zum Fahrzeug und verbinde das Smartphone erneut. Prüfe anschließend den App-Launcher im Fahrzeug.</li>
+      </ol>
+      <div class="note"><b>Falls tuneLINQ weiterhin fehlt:</b> Öffne in den Android-Auto-Einstellungen „Launcher anpassen“ bzw. „Customize launcher“ und prüfe, ob tuneLINQ dort zur Anzeige ausgewählt ist. Die Menübezeichnungen können variieren. Wenn die Option „Unbekannte Quellen“ fehlt oder die App trotzdem nicht erscheint, können Einschränkungen deiner Android-Auto-Version, des Geräts oder des Fahrzeugs eine Rolle spielen.</div>
+    </section>
+
+    <section class="panel" aria-labelledby="test-title">
+      <h2 id="test-title">Alternative: Installation über den Closed Test</h2>
+      <p>Wenn du lieber den von Google Play bereitgestellten Testweg verwenden möchtest, kannst du der tuneLINQ-Testgruppe beitreten und den Installationslink dort nutzen.</p>
+      <div class="actions">
+        <a class="btn" href="https://groups.google.com/g/tunelinq-testgruppe/" target="_blank" rel="noreferrer">Zur tuneLINQ-Testgruppe</a>
+        <a class="btn" href="index.html#test">Anleitung zum Closed Test</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap foot">
+      <div><b style="color:var(--text)">tuneLINQ</b> – Musik &amp; Video ohne Werbung<br />© <span id="year"></span> – Daniel Spatkowski</div>
+      <div><a href="index.html">Startseite</a> · <a href="index.html#privacy">Datenschutz</a> · <a href="index.html#faq">FAQ</a></div>
+    </div>
+  </footer>
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>
