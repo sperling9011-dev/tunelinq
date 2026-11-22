@@ -4,24 +4,28 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#10150d">
-  <title>tuneLINQ für Android herunterladen</title>
-  <meta name="description" content="APK-Download und Installationshinweise für tuneLINQ für Android.">
+  <title>tuneLINQ f&uuml;r Android herunterladen</title>
+  <meta name="description" content="Lade tuneLINQ f&uuml;r Android herunter. Hier findest du den APK-Download, Installationshinweise und Infos zu Android Auto.">
   <style>
     :root { color-scheme: dark; --bg:#0b100c; --surface:#151e15; --text:#f5f7f1; --muted:#bdc5b8; --accent:#c6d62e; --line:rgba(255,255,255,.13); }
     * { box-sizing:border-box; }
     body { margin:0; min-height:100vh; background:radial-gradient(ellipse at 12% 0%,rgba(198,214,46,.14),transparent 34rem),var(--bg); color:var(--text); font:16px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif; }
     a { color:inherit; }
-    .wrap { width:min(900px,calc(100% - 36px)); margin:0 auto; }
+    .wrap { width:min(940px,calc(100% - 36px)); margin:0 auto; }
     header { border-bottom:1px solid var(--line); }
     header .wrap { min-height:70px; display:flex; align-items:center; justify-content:space-between; gap:16px; }
     .brand { color:var(--text); font-weight:800; text-decoration:none; letter-spacing:.02em; }
     .brand span { color:var(--accent); }
     .back { color:var(--muted); font-size:14px; text-decoration:none; }
-    main { padding:64px 0; }
+    main { padding:56px 0 64px; }
     .eyebrow { color:var(--accent); font-size:12px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; }
     h1 { max-width:760px; margin:8px 0 12px; font-size:clamp(38px,7vw,64px); line-height:1.04; letter-spacing:-.045em; }
-    .lead { max-width:68ch; color:var(--muted); font-size:18px; }
-    .panel { margin-top:28px; padding:26px; border:1px solid var(--line); border-radius:22px; background:linear-gradient(145deg,rgba(198,214,46,.1),rgba(255,255,255,.025)); }
+    .lead { max-width:70ch; margin:0; color:var(--muted); font-size:18px; }
+    .features { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; margin:28px 0 0; padding:0; list-style:none; }
+    .features li { padding:15px 17px; border:1px solid var(--line); border-radius:15px; background:rgba(255,255,255,.025); }
+    .features b { display:block; margin-bottom:3px; color:var(--text); }
+    .features span { color:var(--muted); font-size:14px; }
+    .panel { margin-top:20px; padding:26px; border:1px solid var(--line); border-radius:22px; background:linear-gradient(145deg,rgba(198,214,46,.1),rgba(255,255,255,.025)); }
     .panel h2 { margin:0 0 6px; font-size:23px; }
     .panel p { margin:0; color:var(--muted); }
     .btn { display:inline-flex; align-items:center; justify-content:center; gap:9px; min-height:48px; margin-top:18px; padding:12px 18px; border-radius:14px; background:linear-gradient(135deg,#e1ed45,#a9c82b); color:#11150a; font-weight:800; text-decoration:none; }
@@ -29,47 +33,54 @@
     ol { padding-left:22px; color:var(--muted); }
     li + li { margin-top:8px; }
     .note { margin-top:20px; padding:15px 17px; border-left:3px solid var(--accent); border-radius:8px; background:rgba(198,214,46,.08); color:var(--muted); }
-    .testLink { color:#e1ed69; text-underline-offset:3px; }
+    .textLink { color:#e1ed69; text-underline-offset:3px; }
     footer { padding:22px 0 32px; border-top:1px solid var(--line); color:var(--muted); font-size:13px; }
-    @media(max-width:600px) { main { padding:42px 0; } .panel { padding:20px; } }
+    @media(max-width:620px) { main { padding:40px 0 48px; } .panel { padding:20px; } .features { grid-template-columns:1fr; } }
   </style>
 </head>
 <body>
   <header>
     <div class="wrap">
       <a class="brand" href="index.html">tune<span>LINQ</span></a>
-      <a class="back" href="index.html">← Zur Startseite</a>
+      <a class="back" href="index.html">&#8592; Zur Startseite</a>
     </div>
   </header>
   <main class="wrap">
-    <span class="eyebrow">tuneLINQ für Android</span>
+    <span class="eyebrow">tuneLINQ f&uuml;r Android</span>
     <h1>Download &amp; Installation</h1>
-    <p class="lead">tuneLINQ ist kostenlos, werbefrei und ohne Abo. Lade die APK herunter oder nutze den geschlossenen Test über Google Play.</p>
+    <p class="lead">Kostenlos, ohne Werbung und ohne Abo: H&ouml;re lokale Musik und Videos, entdecke mehr als 50.000 Radiosender und nutze Wiedergabelisten, Equalizer, Visualizer und Android Auto.</p>
+    <ul class="features" aria-label="Funktionen von tuneLINQ">
+      <li><b>Musik und Videos</b><span>Greife auf deine lokale Mediathek und Ordner zu.</span></li>
+      <li><b>Radio und Favoriten</b><span>Suche Radiosender und speichere deine Favoriten.</span></li>
+      <li><b>Visualizer und Equalizer</b><span>Gestalte Klang und Wiedergabe nach deinem Geschmack.</span></li>
+      <li><b>Synchronisierung</b><span>Verbinde Android kabellos mit tuneLINQ f&uuml;r Windows.</span></li>
+    </ul>
+    <p class="note">Die PC-Synchronisierung ben&ouml;tigt tuneLINQ f&uuml;r Windows und den tuneLINQ Sync-Helper. Beide sind kostenlos im Microsoft Store erh&auml;ltlich. <a class="textLink" href="index.html#funktionen">Alle Funktionen mit Screenshots ansehen</a>.</p>
 
-    <section class="panel" aria-labelledby="apk-heading">
+    <section class="panel" aria-labelledby="apk-heading" id="apk-download">
       <h2 id="apk-heading">APK herunterladen</h2>
-      <p>Tippe auf den Button, um die Android-Installationsdatei herunterzuladen. Öffne anschließend die heruntergeladene APK, um die Installation zu starten.</p>
-      <a class="btn" href="Downloads/tuneLINQ.apk" download>APK-Datei herunterladen <span aria-hidden="true">↓</span></a>
-      <div class="note">Falls Android nachfragt, erlaube deinem Browser oder Dateimanager vorübergehend, unbekannte Apps zu installieren. Bestätige danach die Installation von tuneLINQ.</div>
+      <p>Lade die Android-Installationsdatei herunter. &Ouml;ffne anschlie&szlig;end die heruntergeladene APK, um die Installation zu starten.</p>
+      <a class="btn" href="Downloads/tuneLINQ.apk" download>APK-Datei herunterladen <span aria-hidden="true">&#8595;</span></a>
+      <div class="note">Falls Android nachfragt, erlaube deinem Browser oder Dateimanager vor&uuml;bergehend, unbekannte Apps zu installieren. Best&auml;tige danach die Installation von tuneLINQ.</div>
     </section>
 
     <section class="panel" aria-labelledby="auto-heading">
       <h2 id="auto-heading">Android Auto</h2>
-      <p>Bei einer Installation per APK kann tuneLINQ zunächst in Android Auto ausgeblendet sein. In diesem Fall:</p>
+      <p>Bei einer Installation per APK kann tuneLINQ zun&auml;chst in Android Auto ausgeblendet sein. In diesem Fall:</p>
       <ol>
-        <li>Öffne die Einstellungen der Android Auto App auf deinem Smartphone.</li>
-        <li>Aktiviere in den Entwicklereinstellungen die Option „Unbekannte Quellen“.</li>
-        <li>Verbinde Android Auto erneut und prüfe, ob tuneLINQ angezeigt wird.</li>
+        <li>&Ouml;ffne die Einstellungen der Android Auto App auf deinem Smartphone.</li>
+        <li>Aktiviere in den Entwicklereinstellungen die Option &bdquo;Unbekannte Quellen&ldquo;.</li>
+        <li>Verbinde Android Auto erneut und pr&uuml;fe, ob tuneLINQ angezeigt wird.</li>
       </ol>
-      <p>Die genaue Bezeichnung der Einstellungen kann je nach Android-Version variieren. Die Freigabe garantiert nicht, dass tuneLINQ auf jedem Gerät oder Fahrzeug erscheint.</p>
+      <p>Die genaue Bezeichnung der Einstellungen kann je nach Android-Version variieren. Die Freigabe garantiert nicht, dass tuneLINQ auf jedem Ger&auml;t oder Fahrzeug erscheint.</p>
     </section>
 
     <section class="panel" aria-labelledby="test-heading">
       <h2 id="test-heading">Alternative: Closed Test</h2>
-      <p>Du kannst tuneLINQ außerdem über den geschlossenen Google-Play-Test ausprobieren. Tritt dazu der Testgruppe bei und öffne anschließend den dort bereitgestellten Testlink.</p>
-      <a class="testLink" href="https://groups.google.com/g/tunelinq-testgruppe/" target="_blank" rel="noopener noreferrer">Zur tuneLINQ-Testgruppe ↗</a>
+      <p>Du kannst tuneLINQ auch &uuml;ber den geschlossenen Google-Play-Test ausprobieren. Tritt der Testgruppe bei und &ouml;ffne danach den dort bereitgestellten Testlink.</p>
+      <a class="textLink" href="https://groups.google.com/g/tunelinq-testgruppe/" target="_blank" rel="noopener noreferrer">Zur tuneLINQ-Testgruppe &#8599;</a>
     </section>
   </main>
-  <footer><div class="wrap">© 2026 Daniel Spatkowski · <a href="index.html">Zur tuneLINQ-Startseite</a></div></footer>
+  <footer><div class="wrap">&copy; 2026 Daniel Spatkowski &middot; <a href="index.html">Zur tuneLINQ-Startseite</a></div></footer>
 </body>
 </html>
