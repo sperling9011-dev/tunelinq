@@ -43,6 +43,15 @@
     nav { display: flex; gap: 20px; align-items: center; }
     nav a { color: var(--muted); font-size: 14px; font-weight: 650; }
     nav a:hover { color: var(--text); }
+    .navDropdown { position: relative; }
+    .navDropdown summary { list-style: none; cursor: pointer; color: var(--muted); font-size: 14px; font-weight: 650; white-space: nowrap; }
+    .navDropdown summary::-webkit-details-marker { display: none; }
+    .navDropdown summary::after { content: "\25BE"; margin-left: 6px; font-size: 11px; }
+    .navDropdown summary:hover, .navDropdown[open] summary { color: var(--text); }
+    .navDropdown summary:focus-visible, .dropdownMenu a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+    .dropdownMenu { position: absolute; top: calc(100% + 14px); right: 0; z-index: 20; display: grid; min-width: 230px; padding: 7px; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); box-shadow: 0 16px 40px rgba(0,0,0,.35); }
+    .dropdownMenu a { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 10px 12px; border-radius: 9px; color: var(--text); text-decoration: none; white-space: nowrap; }
+    .dropdownMenu a:hover { background: rgba(255,255,255,.07); }
     .btn { display: inline-flex; align-items: center; justify-content: center; gap: 9px; min-height: 46px; padding: 11px 17px; border: 1px solid var(--line); border-radius: 14px; background: rgba(255,255,255,.04); color: var(--text); font-weight: 750; transition: transform .15s ease, filter .15s ease, background .15s ease; }
     .btn:hover { transform: translateY(-1px); background: rgba(255,255,255,.09); }
     .btn.primary { color: #11150a; border-color: transparent; background: linear-gradient(135deg, #e1ed45, #a9c82b); }
@@ -100,7 +109,8 @@
     .footerLinks { display: flex; gap: 16px; flex-wrap: wrap; }
     .footerLinks a { text-decoration: underline; text-underline-offset: 3px; }
     @media (max-width: 900px) {
-      nav { display: none; }
+      nav { display: flex; gap: 0; }
+      nav > a { display: none; }
       .heroGrid { grid-template-columns: 1fr; gap: 10px; }
       .heroIntro { text-align: center; }
       .heroActions { justify-content: center; }
@@ -110,7 +120,9 @@
     }
     @media (max-width: 620px) {
       .wrap { width: min(var(--max), calc(100% - 28px)); }
-      .nav { min-height: 66px; }
+      .nav { min-height: 66px; gap: 8px; }
+      .brand small { display: none; }
+      .navDropdown summary { font-size: 12px; }
       .nav > .btn { padding: 9px 11px; min-height: 40px; font-size: 12px; }
       .hero { padding-top: 38px; }
       .heroDevices { height: clamp(290px,82vw,360px); }
@@ -139,6 +151,13 @@
         <a href="#synchronisieren">Synchronisieren</a>
         <a href="#android-auto">Android Auto</a>
         <a href="#test">Closed Test</a>
+        <details class="navDropdown">
+          <summary>Weitere Apps</summary>
+          <div class="dropdownMenu">
+            <a href="https://sperling9011-dev.github.io/tuneLINQ-for-Windows/" target="_blank" rel="noopener noreferrer"><span>tuneLINQ f&uuml;r Windows</span><span aria-hidden="true">&#8599;</span></a>
+            <a href="https://sperling9011-dev.github.io/tunelinq-sync-helper/" target="_blank" rel="noopener noreferrer"><span>tuneLINQ Sync-Helper</span><span aria-hidden="true">&#8599;</span></a>
+          </div>
+        </details>
       </nav>
       <a class="btn primary small" href="download.html">Download ZIP <span aria-hidden="true">&#8599;</span></a>
     </div>

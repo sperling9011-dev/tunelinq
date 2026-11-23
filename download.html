@@ -34,6 +34,13 @@
     li + li { margin-top:8px; }
     .note { margin-top:20px; padding:15px 17px; border-left:3px solid var(--accent); border-radius:8px; background:rgba(198,214,46,.08); color:var(--muted); }
     .textLink { color:#e1ed69; text-underline-offset:3px; }
+    .embeddedApps > p { margin:0; color:var(--muted); }
+    .embeddedApp { margin-top:22px; overflow:hidden; border:1px solid var(--line); border-radius:16px; background:rgba(255,255,255,.025); }
+    .embeddedApp + .embeddedApp { margin-top:18px; }
+    .embeddedAppHeader { display:flex; align-items:center; justify-content:space-between; gap:14px; padding:15px 17px; }
+    .embeddedAppHeader h3 { margin:0; font-size:18px; }
+    .embeddedAppHeader a { color:#e1ed69; font-size:14px; text-underline-offset:3px; white-space:nowrap; }
+    .appFrame { display:block; width:100%; height:clamp(560px,80vh,760px); border:0; border-top:1px solid var(--line); background:var(--bg); }
     footer { padding:22px 0 32px; border-top:1px solid var(--line); color:var(--muted); font-size:13px; }
     @media(max-width:620px) { main { padding:40px 0 48px; } .panel { padding:20px; } .features { grid-template-columns:1fr; } }
   </style>
@@ -79,6 +86,25 @@
       <h2 id="test-heading">Alternative: Closed Test</h2>
       <p>Du kannst tuneLINQ auch &uuml;ber den geschlossenen Google-Play-Test ausprobieren. Tritt der Testgruppe bei und &ouml;ffne danach den dort bereitgestellten Testlink.</p>
       <a class="textLink" href="https://groups.google.com/g/tunelinq-testgruppe/" target="_blank" rel="noopener noreferrer">Zur tuneLINQ-Testgruppe &#8599;</a>
+    </section>
+
+    <section class="panel embeddedApps" aria-labelledby="apps-heading">
+      <h2 id="apps-heading">Weitere tuneLINQ Apps</h2>
+      <p>Hier kannst du die Seiten zu den Windows-Apps direkt ansehen oder separat &ouml;ffnen.</p>
+      <article class="embeddedApp" aria-labelledby="windows-app-heading">
+        <div class="embeddedAppHeader">
+          <h3 id="windows-app-heading">tuneLINQ f&uuml;r Windows</h3>
+          <a href="https://sperling9011-dev.github.io/tuneLINQ-for-Windows/" target="_blank" rel="noopener noreferrer">Seite separat &ouml;ffnen &#8599;</a>
+        </div>
+        <iframe class="appFrame" src="https://sperling9011-dev.github.io/tuneLINQ-for-Windows/" title="tuneLINQ f&uuml;r Windows" loading="lazy" referrerpolicy="strict-origin-when-cross-origin">Dein Browser kann die Seite nicht einbetten. <a href="https://sperling9011-dev.github.io/tuneLINQ-for-Windows/">tuneLINQ f&uuml;r Windows direkt &ouml;ffnen</a>.</iframe>
+      </article>
+      <article class="embeddedApp" aria-labelledby="sync-helper-heading">
+        <div class="embeddedAppHeader">
+          <h3 id="sync-helper-heading">tuneLINQ Sync-Helper</h3>
+          <a href="https://sperling9011-dev.github.io/tunelinq-sync-helper/" target="_blank" rel="noopener noreferrer">Seite separat &ouml;ffnen &#8599;</a>
+        </div>
+        <iframe class="appFrame" src="https://sperling9011-dev.github.io/tunelinq-sync-helper/" title="tuneLINQ Sync-Helper" loading="lazy" referrerpolicy="strict-origin-when-cross-origin">Dein Browser kann die Seite nicht einbetten. <a href="https://sperling9011-dev.github.io/tunelinq-sync-helper/">tuneLINQ Sync-Helper direkt &ouml;ffnen</a>.</iframe>
+      </article>
     </section>
   </main>
   <footer><div class="wrap">&copy; 2026 Daniel Spatkowski &middot; <a href="index.html">Zur tuneLINQ-Startseite</a> &middot; <a href="impressum.html">Impressum</a> &middot; <a href="datenschutz.html">Datenschutz</a></div></footer>
